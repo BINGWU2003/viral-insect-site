@@ -42,7 +42,7 @@
     </div>
     <div class="home-bottom-content">
       <div class="home-bottom-content-left">
-        <div style="width: 45%;">
+        <div style="width: 70%;">
           <div class="news">
             <h1>Selected vector index</h1>
             <div class="content">
@@ -74,7 +74,7 @@
     </div>
     <div class="home-bottom-content">
       <div class="home-bottom-content-left">
-        <div style="width: 45%;">
+        <div style="width: 70%;">
           <div class="news">
             <h1>Selected viral families</h1>
             <p class="content">
