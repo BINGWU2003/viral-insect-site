@@ -20,6 +20,5 @@ import NavTab from '@/components/nav-tab/index.vue'
 .layout {
   display: flex;
   flex-direction: column;
-  height: 100%;
 }
 </style>
