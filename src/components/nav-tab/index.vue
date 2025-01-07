@@ -1,6 +1,6 @@
 <template>
   <div class="nav-tab">
-    <n-tabs type="line" animated size="large" @update:value="handleChange">
+    <n-tabs type="line" animated size="large" @update:value="handleChange" :value="tabValue">
       <n-tab-pane v-for="({ name, path }) in routes" :name="name" :tab="name" :key="path">
         <template #tab v-if="name === 'Browse'">
           <div style="display: flex;align-items: center;">
@@ -22,9 +22,10 @@
 
 <script setup>
 import { MdArrowDropdown } from '@vicons/ionicons4'
-import { ref } from 'vue'
-import { useRouter } from 'vue-router'
+import { ref, computed } from 'vue'
+import { useRouter, useRoute } from 'vue-router'
 const router = useRouter()
+const route = useRoute()
 const routes = ref([
   { name: 'Home', path: '/' },
   { name: 'Browse', path: '/browse' },
@@ -36,6 +37,12 @@ const options = [
   { label: 'By Virus-Plant', key: 'By Virus-Plant' },
   { label: 'By Virus-Plant And Virus-Insect', key: 'By Virus-Plant And Virus-Insect' }
 ]
+const tabValue = computed({
+  get: () => {
+    return routes.value.find(({ path }) => path === route.path)?.name || 'Home'
+  },
+  set: (value) => value
+})
 const handleChange = (name) => {
   const route = routes.value.find((route) => route.name === name)
   router.push(route.path)

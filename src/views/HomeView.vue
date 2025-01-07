@@ -45,13 +45,20 @@
         <div style="width: 45%;">
           <div class="news">
             <h1>Selected vector index</h1>
-            <p class="content">Li Yi | The "behind-the-scenes pioneer" in fighting plant virusesLi Yi | The
-              "behind-the-scenes pioneer" in fighting plant viruses Li Yi | The "behind-the-scenes pioneer" in fighting
-              plant viruses Li Yi | The "behind-the-scenes pioneer" in fighting plant viruses Li Yi | The
-              "behind-the-scenes
-              pioneer" in fighting plant viruses Li Yi | The "behind-the-scenes pioneer" in fighting plant viruses Li Yi
-              |
-              The "behind-the-scenes pioneer" in fighting plant viruses </p>
+            <div class="content">
+              <SelectItem></SelectItem>
+              <SelectItem></SelectItem>
+              <SelectItem></SelectItem>
+              <SelectItem></SelectItem>
+              <SelectItem></SelectItem>
+              <SelectItem></SelectItem>
+              <SelectItem></SelectItem>
+              <SelectItem></SelectItem>
+              <SelectItem></SelectItem>
+              <SelectItem></SelectItem>
+              <SelectItem></SelectItem>
+              <SelectItem></SelectItem>
+            </div>
           </div>
         </div>
       </div>
@@ -59,16 +66,53 @@
         <h1 class="news title-border">
           Related links
         </h1>
-        <div>
+        <div style="margin-top: 10px;">
           <div v-for="(item) in relatedLinks" :href="url" :key="item.url" style="cursor: pointer;"
             @click="navigateTo(item.url)">{{ item.name }}</div>
         </div>
       </div>
     </div>
+    <div class="home-bottom-content">
+      <div class="home-bottom-content-left">
+        <div style="width: 45%;">
+          <div class="news">
+            <h1>Selected viral families</h1>
+            <p class="content">
+              <SelectItem></SelectItem>
+              <SelectItem></SelectItem>
+              <SelectItem></SelectItem>
+              <SelectItem></SelectItem>
+              <SelectItem></SelectItem>
+              <SelectItem></SelectItem>
+              <SelectItem></SelectItem>
+              <SelectItem></SelectItem>
+              <SelectItem></SelectItem>
+              <SelectItem></SelectItem>
+              <SelectItem></SelectItem>
+              <SelectItem></SelectItem>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="home-bottom-content-right">
+        <h1 class="news">
+          Virus family distribution
+        </h1>
+        <div>
+          <img src="../assets/图片1.png" alt="" style="height: 200px;object-fit: contain;">
+        </div>
+      </div>
+    </div>
+    <div class="author-info">
+      <p>For follow-up questions, please contact Dr. Zhang Zheng@邮箱</p>
+      <p>Hunan Agricultural University,Changsha, China</p>
+      <p>Data last updated on XXXX</p>
+    </div>
   </div>
 </template>
 
 <script setup>
+import SelectItem from '@/components/select-item/index.vue'
 const topNav = [
   {
     content1: 'Non-Persistent Transmission',
@@ -190,7 +234,11 @@ const navigateTo = (url) => {
       .content {
         height: 100px;
         overflow: auto;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
       }
+
     }
   }
 
@@ -203,6 +251,7 @@ const navigateTo = (url) => {
     .home-bottom-content-left {
       flex: 2;
       padding: 20px;
+
       div {
         .news {
           border-radius: 6px;
@@ -210,7 +259,11 @@ const navigateTo = (url) => {
           .content {
             height: 100px;
             overflow: auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
           }
+
         }
       }
     }
@@ -233,6 +286,17 @@ const navigateTo = (url) => {
         color: #1565bd;
       }
     }
+  }
+
+  .author-info {
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    color: black;
+    margin-top: 20px;
+    align-items: center;
+    border-top: 3px solid #70ad47;
   }
 }
 
