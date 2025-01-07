@@ -44,18 +44,19 @@
       <div class="home-bottom-content-left">
         <div style="width: 45%;">
           <div class="news">
-          <h1>Selected vector index</h1>
-          <p class="content">Li Yi | The "behind-the-scenes pioneer" in fighting plant virusesLi Yi | The
-            "behind-the-scenes pioneer" in fighting plant viruses Li Yi | The "behind-the-scenes pioneer" in fighting
-            plant viruses Li Yi | The "behind-the-scenes pioneer" in fighting plant viruses Li Yi | The
-            "behind-the-scenes
-            pioneer" in fighting plant viruses Li Yi | The "behind-the-scenes pioneer" in fighting plant viruses Li Yi |
-            The "behind-the-scenes pioneer" in fighting plant viruses </p>
-        </div>
+            <h1>Selected vector index</h1>
+            <p class="content">Li Yi | The "behind-the-scenes pioneer" in fighting plant virusesLi Yi | The
+              "behind-the-scenes pioneer" in fighting plant viruses Li Yi | The "behind-the-scenes pioneer" in fighting
+              plant viruses Li Yi | The "behind-the-scenes pioneer" in fighting plant viruses Li Yi | The
+              "behind-the-scenes
+              pioneer" in fighting plant viruses Li Yi | The "behind-the-scenes pioneer" in fighting plant viruses Li Yi
+              |
+              The "behind-the-scenes pioneer" in fighting plant viruses </p>
+          </div>
         </div>
       </div>
       <div class="home-bottom-content-right">
-        <h1 class="news">
+        <h1 class="news title-border">
           Related links
         </h1>
         <div>
@@ -201,7 +202,7 @@ const navigateTo = (url) => {
 
     .home-bottom-content-left {
       flex: 2;
-
+      padding: 20px;
       div {
         .news {
           border-radius: 6px;
@@ -220,8 +221,6 @@ const navigateTo = (url) => {
       flex: 1;
 
       .news {
-        border-radius: 6px;
-
         .content {
           height: 100px;
           overflow: auto;
