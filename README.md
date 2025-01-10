@@ -77,7 +77,7 @@ pnpm lint
 | host_tax_id               | 表格HostTaxID列    |
 | vector_order              | 表格VectorOrder列  |
 | vector_family             | 表格VectorFamily列 |
-| vector_genus              | 表格VectorGenusy列 |
+| vector_genus              | 表格VectorGenus列  |
 | vector                    | 表格Insect列       |
 | vector_tax_id             | 表格InsectTaxID列  |
 | virus_mode(病毒存在模式)  | 表格VirusMode列    |

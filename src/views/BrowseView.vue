@@ -43,19 +43,51 @@ const filterContent = [
 ]
 const columns = [
   {
-    title: 'No',
+    title: 'VirusFamily',
     key: 'no'
   },
   {
-    title: 'Title',
+    title: 'VirusGenus',
     key: 'title'
   },
   {
-    title: 'Length',
+    title: 'Virus',
     key: 'length'
   },
   {
-    title: 'Action',
+    title: 'VirusTaxID',
+    key: 'actions'
+  },
+  {
+    title: 'HostName',
+    key: 'actions'
+  },
+  {
+    title: 'HostTaxID',
+    key: 'actions'
+  },
+  {
+    title: 'VectorOrder',
+    key: 'actions'
+  },
+  {
+    title: 'VectorFamily',
+    key: 'actions'
+  },
+  {
+    title: 'VectorGenus',
+    key: 'actions'
+  },
+  {
+    title: 'Insect',
+    key: 'actions'
+  },
+  {
+    title: 'InsectTaxID',
+    key: 'actions'
+  },
+  {
+    title: 'VirusMode',
     key: 'actions'
   }
 ]
@@ -147,8 +179,7 @@ const onUpdatePageSize = (pageSize) => {
     }
   }
 
-  .table {
-    width: 80%;
+        .table {
     margin: 0 auto;
   }
 }
