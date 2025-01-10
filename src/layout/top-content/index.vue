@@ -18,6 +18,7 @@
   background-position: center; /* 使背景图居中 */
   .title {
     color: white;
+    font-size: 40px;
   }
 }
 </style>
