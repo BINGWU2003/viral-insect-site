@@ -47,7 +47,7 @@ pnpm lint
 | virus_tax_id(virusTaxID)  | 表格VirusTaxID列  |
 | host_name                 | 表格Plant列       |
 | host_tax_id               | 表格PlantTaxID列  |
-| virus_mode(病毒存在模式)  | 表格virusMode列   |
+| virus_mode(病毒存在模式)  | 表格VirusMode列   |
 
 ### 病毒-昆虫传播关系
 
@@ -61,7 +61,7 @@ pnpm lint
 | vector_order              | 表格InsectOrder列 |
 | vector                    | 表格Insect列      |
 | vector_tax_id             | 表格InsectTaxID列 |
-| virus_mode(病毒存在模式)  | 表格virusMode列   |
+| virus_mode(病毒存在模式)  | 表格VirusMode列   |
 
 ### 病毒-植物-昆虫关系
 
@@ -80,4 +80,4 @@ pnpm lint
 | vector_genus              | 表格VectorGenusy列 |
 | vector                    | 表格Insect列       |
 | vector_tax_id             | 表格InsectTaxID列  |
-| virus_mode(病毒存在模式)  | 表格virusMode列    |
+| virus_mode(病毒存在模式)  | 表格VirusMode列    |
