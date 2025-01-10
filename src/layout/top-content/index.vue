@@ -14,8 +14,8 @@
   background-color: #f0f0f0;
   height: 300px;
   background-image: url(../../assets/background.png);
-  background-size: 100% 100%; /* 使背景图宽度和容器一样 */
-  background-position: center; /* 使背景图居中 */
+  background-size: cover;
+  background-position: center;
   .title {
     color: white;
     font-size: 40px;
