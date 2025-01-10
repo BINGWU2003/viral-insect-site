@@ -17,7 +17,7 @@
   background-size: 100% 100%; /* 使背景图宽度和容器一样 */
   background-position: center; /* 使背景图居中 */
   .title {
-    color: #a9d18e;
+    color: white;
   }
 }
 </style>
