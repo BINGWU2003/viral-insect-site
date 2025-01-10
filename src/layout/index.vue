@@ -1,12 +1,14 @@
 <template>
   <div class="layout">
     <TopContent />
-    <NavTab />
-    <BottomContent>
-      <template #content>
-        <slot />
-      </template>
-    </BottomContent>
+    <div class="layout__content">
+      <NavTab />
+      <BottomContent>
+        <template #content>
+          <slot />
+        </template>
+      </BottomContent>
+    </div>
   </div>
 </template>
 
@@ -21,5 +23,10 @@ import NavTab from '@/components/nav-tab/index.vue'
   display: flex;
   flex-direction: column;
   background-color: #fff;
+
+  .layout__content {
+    width: 1200px;
+    margin: 0 auto;
+  }
 }
 </style>
