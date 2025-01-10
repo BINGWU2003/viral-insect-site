@@ -12,7 +12,7 @@
 .top-content {
   padding: 20px;
   background-color: #f0f0f0;
-  height: 200px;
+  height: 300px;
   background-image: url(../../assets/background.png);
   background-size: 100% 100%; /* 使背景图宽度和容器一样 */
   background-position: center; /* 使背景图居中 */
