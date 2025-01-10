@@ -22,11 +22,12 @@ import NavTab from '@/components/nav-tab/index.vue'
 .layout {
   display: flex;
   flex-direction: column;
-  background-color: #fff;
+  background-color: #e5e7ed;
 
   .layout__content {
     width: 1200px;
     margin: 0 auto;
+    background-color: #fff;
   }
 }
 </style>
