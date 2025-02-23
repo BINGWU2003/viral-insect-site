@@ -3,7 +3,7 @@
     <h1 class="title">All virus-plant-insect interactions in Database</h1>
     <div class="search">
       <div class="search-input">
-        <n-input v-model:value="keyWords" type="text" placeholder="Search virus" />
+        <n-input v-model:value="keyWords" type="text" placeholder="Search virus" @keyup.enter="handleSearch" />
         <div class="search-button" @click="handleSearch">search</div>
       </div>
       <div class="filter-content">
