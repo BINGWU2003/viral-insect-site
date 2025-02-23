@@ -1,12 +1,29 @@
 <template>
-  <div class="select-item">
-    <img src="../../assets/viral1.png" alt="">
-    {{ 'name' }}
+  <div class="select-item" @click="handleClick">
+    <img :src="imageSrc" alt="">
+    {{ props.name }}
   </div>
 </template>
 
-<script>
+<script setup>
 import { ref, computed } from 'vue'
+const props = defineProps({
+  name: {
+    type: String,
+    default: ''
+  },
+  imageType: {
+    type: String,
+    default: 'vector'
+  }
+})
+const imageSrc = computed(() => {
+  return props.imageType === 'vector' ? 'src/assets/viral1.png' : 'src/assets/昆虫.png'
+})
+const emtis = defineEmits(['select'])
+const handleClick = () => {
+  emtis('select', props.name, props.imageType)
+}
 </script>
 
 <style lang="scss" scoped>

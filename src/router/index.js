@@ -10,6 +10,7 @@ const router = createRouter({
     {
       path: '/browse',
       name: 'browse',
+
       component: () => import('../views/BrowseView.vue'),
     },
     {

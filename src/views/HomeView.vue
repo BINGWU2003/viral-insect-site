@@ -2,15 +2,17 @@
   <div class="home">
     <div class="home-top-content">
       <div class="home-top-content-item" v-for="(item, index) in topNav" :key="index">
-        <div class="home-top-content-item-top"
+        <div class="home-top-content-item-top" @click="handleClickFilterContent(item.content1)"
           :style="{ backgroundColor: item.backgroundColor, borderColor: item.borderColor }">
           {{ item.content1 }}
         </div>
         <div class="home-top-content-item-bottom" v-if="item.content2 && item.content3">
-          <div :style="{ backgroundColor: item.backgroundColor, borderColor: item.borderColor }" v-if="item.content2">
+          <div :style="{ backgroundColor: item.backgroundColor, borderColor: item.borderColor }" v-if="item.content2"
+            @click="handleClickFilterContent(item.content2)">
             {{ item.content2 }}
           </div>
-          <div :style="{ backgroundColor: item.backgroundColor, borderColor: item.borderColor }" v-if="item.content2">
+          <div :style="{ backgroundColor: item.backgroundColor, borderColor: item.borderColor }" v-if="item.content2"
+            @click="handleClickFilterContent(item.content3)">
             {{ item.content3 }}
           </div>
         </div>
@@ -46,18 +48,9 @@
           <div class="news">
             <h1>Selected vector index</h1>
             <div class="content">
-              <SelectItem></SelectItem>
-              <SelectItem></SelectItem>
-              <SelectItem></SelectItem>
-              <SelectItem></SelectItem>
-              <SelectItem></SelectItem>
-              <SelectItem></SelectItem>
-              <SelectItem></SelectItem>
-              <SelectItem></SelectItem>
-              <SelectItem></SelectItem>
-              <SelectItem></SelectItem>
-              <SelectItem></SelectItem>
-              <SelectItem></SelectItem>
+              <template v-for="(item, index) in insectFamilies" :key="index">
+                <SelectItem :name="item.name" imageType="virus"></SelectItem>
+              </template>
             </div>
           </div>
         </div>
@@ -78,23 +71,14 @@
           <div class="news">
             <h1>Selected viral families</h1>
             <p class="content">
-              <SelectItem></SelectItem>
-              <SelectItem></SelectItem>
-              <SelectItem></SelectItem>
-              <SelectItem></SelectItem>
-              <SelectItem></SelectItem>
-              <SelectItem></SelectItem>
-              <SelectItem></SelectItem>
-              <SelectItem></SelectItem>
-              <SelectItem></SelectItem>
-              <SelectItem></SelectItem>
-              <SelectItem></SelectItem>
-              <SelectItem></SelectItem>
+              <template v-for="(item, index) in virusFamilies" :key="index">
+                <SelectItem :name="item.name" imageType="vector" @select="handleSelectViral"></SelectItem>
+              </template>
             </p>
           </div>
         </div>
       </div>
-      <div class="home-bottom-content-right">
+      <div class="home-bottom-content-right" style="opacity: 0;">
         <h1 class="news">
           Virus family distribution
         </h1>
@@ -113,6 +97,8 @@
 
 <script setup>
 import SelectItem from '@/components/select-item/index.vue'
+import { useRouter } from 'vue-router'
+const router = useRouter()
 const topNav = [
   {
     content1: 'Non-Persistent Transmission',
@@ -154,6 +140,81 @@ const relatedLinks = [
 const navigateTo = (url) => {
   window.location.href = url
 }
+
+const insectFamilies = [
+  { id: 1, name: 'Aleyrodidae' },
+  { id: 2, name: 'Cicadellidae' },
+  { id: 3, name: 'Aphididae' },
+  { id: 4, name: 'Chrysomelidae' },
+  { id: 5, name: 'Scarabaeidae' },
+  { id: 6, name: 'Apidae' },
+  { id: 7, name: 'Coccinellidae' },
+  { id: 8, name: 'Delphacidae' },
+  { id: 9, name: 'Thripidae' },
+  { id: 10, name: 'Cerambycidae' },
+  { id: 11, name: 'Tenuipalpidae' },
+  { id: 12, name: 'Tetranychidae' },
+  { id: 13, name: 'Culicidae' },
+  { id: 14, name: 'Pseudococcidae' },
+  { id: 15, name: 'Eriophyidae' },
+  { id: 16, name: 'Noctuidae' },
+  { id: 17, name: 'Sciaridae' },
+  { id: 18, name: 'Bombycidae' },
+  { id: 19, name: 'Sphingidae' },
+]
+
+const virusFamilies = [
+  { id: 1, name: 'Solemoviridae' },
+  { id: 2, name: 'Nanoviridae' },
+  { id: 3, name: 'Tombusviridae' },
+  { id: 4, name: 'Geminiviridae' },
+  { id: 5, name: 'Secoviridae' },
+  { id: 6, name: 'Tymoviridae' },
+  { id: 7, name: 'Tospoviridae' },
+  { id: 8, name: 'Rhabdoviridae' },
+  { id: 9, name: 'Sedoreoviridae' },
+  { id: 10, name: 'Spinareoviridae' },
+  { id: 11, name: 'Phenuiviridae' },
+  { id: 12, name: 'Caulimoviridae' },
+  { id: 13, name: 'Closteroviridae' },
+  { id: 14, name: 'Betaflexiviridae' },
+  { id: 15, name: 'unkown' },
+  { id: 16, name: 'Potyviridae' },
+  { id: 17, name: 'Bromoviridae' },
+  { id: 18, name: 'Alphaflexiviridae' },
+  { id: 19, name: 'Virgaviridae' },
+  { id: 20, name: 'Pospiviroidae' },
+  { id: 21, name: 'Partitiviridae' },
+  { id: 22, name: 'Dicistroviridae' },
+  { id: 23, name: 'Tolecusatellitidae' },
+  { id: 24, name: 'Totiviridae' },
+  { id: 25, name: 'Baculoviridae' },
+  { id: 26, name: 'Parvoviridae' },
+  { id: 27, name: 'Benyviridae' },
+  { id: 28, name: 'Nodaviridae' },
+  { id: 29, name: 'Iflaviridae' },
+  { id: 30, name: 'Mesoniviridae' },
+  { id: 31, name: 'Fimoviridae' },
+  { id: 32, name: 'Chuviridae' },
+]
+const handleClickFilterContent = (name) => {
+  router.push({
+    name: 'browse',
+    query: {
+      mode: name
+    }
+  })
+}
+const handleSelectViral = (name, type) => {
+  router.push({
+    name: 'browse',
+    query: {
+      name,
+      type
+    }
+  })
+}
+
 </script>
 
 <style lang="scss" scoped>
@@ -180,6 +241,7 @@ const navigateTo = (url) => {
         align-items: center;
         border-radius: 6px;
         border: 1px solid #d786ff;
+        cursor: pointer;
       }
 
       .home-top-content-item-bottom {
@@ -197,6 +259,7 @@ const navigateTo = (url) => {
           min-height: 100px;
           border-radius: 6px;
           border: 1px solid #d786ff;
+          cursor: pointer;
         }
       }
     }

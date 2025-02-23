@@ -3,24 +3,31 @@
     <h1 class="title">All virus-plant-insect interactions in Database</h1>
     <div class="search">
       <div class="search-input">
-        <n-input v-model:value="value" type="text" placeholder="Search virus" />
-        <div class="search-button">search</div>
+        <n-input v-model:value="keyWords" type="text" placeholder="Search virus" />
+        <div class="search-button" @click="handleSearch">search</div>
       </div>
       <div class="filter-content">
-        <div v-for="(item, index) in filterContent" :key="index">
+        <div v-for="(item, index) in filterContent" :key="index"
+          :style="{ backgroundColor: currentSelectMode === item.name ? '#548235' : '#c5e0b4' }"
+          @click="handleClickMode(item.name)">
           {{ item.name }}
         </div>
       </div>
     </div>
     <div class="table">
       <n-data-table :columns="columns" :data="data" :pagination="pagination" :bordered="false" @update:page="onChange"
-        @update:page-size="onUpdatePageSize" striped />
+        @update:page-size="onUpdatePageSize" striped remote />
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { getViralInsectData } from '@/api/browse'
+import { ref, onMounted, computed } from 'vue'
+import { useRoute } from 'vue-router'
+const keyWords = ref('')
+const route = useRoute()
+const mode = ref('')
 const filterContent = [
   {
     name: 'Non-Persistent Transmission',
@@ -41,86 +48,98 @@ const filterContent = [
     name: 'Circulative, Persistent Non-Propagative Transmission',
   }
 ]
+const currentSelectMode = computed(() => {
+  return mode.value || route.query.mode || ''
+})
 const columns = [
   {
     title: 'VirusFamily',
-    key: 'no'
+    key: 'virusFamily'
   },
   {
     title: 'VirusGenus',
-    key: 'title'
+    key: 'vectorGenus'
   },
   {
     title: 'Virus',
-    key: 'length'
+    key: 'virusName'
   },
   {
     title: 'VirusTaxID',
-    key: 'actions'
-  },
-  {
-    title: 'HostName',
-    key: 'actions'
-  },
-  {
-    title: 'HostTaxID',
-    key: 'actions'
+    key: 'vectorTaxId'
   },
   {
     title: 'VectorOrder',
-    key: 'actions'
+    key: 'vectorOrder'
   },
   {
     title: 'VectorFamily',
-    key: 'actions'
+    key: 'vectorFamily'
   },
   {
     title: 'VectorGenus',
-    key: 'actions'
+    key: 'vectorGenus'
   },
   {
-    title: 'Insect',
-    key: 'actions'
-  },
-  {
-    title: 'InsectTaxID',
-    key: 'actions'
+    title: 'Vector',
+    key: 'vector'
   },
   {
     title: 'VirusMode',
-    key: 'actions'
+    key: 'virusExistencePattern'
   }
 ]
-const data = [
-  { no: 3, title: 'Wonderwall', length: '4:18' },
-  { no: 4, title: 'Don\'t Look Back in Anger', length: '4:48' },
-  { no: 12, title: 'Champagne Supernova', length: '7:27' }
-]
+const data = ref([])
 
 const pagination = ref({
   page: 1,
   pageSize: 5,
   showSizePicker: true,
   pageSizes: [3, 5, 7],
-  itemCount: 1001,
+  itemCount: 1,
   prefix: () => { //分页前缀
     return `Total is ${pagination.value.itemCount}.`
   },
   showQuickJumper: true,
 })
-const onChange = (page) => {
+const onChange = async (page) => {
   pagination.value.page = page
+  await getTableData()
 }
-const onUpdatePageSize = (pageSize) => {
+const onUpdatePageSize = async (pageSize) => {
   pagination.value.pageSize = pageSize
   pagination.value.page = 1
+  await getTableData()
 }
+
+const handleClickMode = async (name) => {
+  mode.value = name
+  await getTableData()
+}
+
+const handleSearch = async () => {
+  pagination.value.page = 1
+  await getTableData()
+}
+const getTableData = async () => {
+  const params = {
+    current: pagination.value.page,
+    size: pagination.value.pageSize,
+    virusExistencePattern: currentSelectMode.value,
+    keyWords: keyWords.value
+  }
+  const res = await getViralInsectData(params)
+  data.value = res.data.data.records
+  pagination.value.itemCount = res.data.data.total
+}
+onMounted(async () => {
+  await getTableData()
+
+})
+
 </script>
 
 <style lang="scss" scoped>
-// :deep(table thead tr th) {
-//   background-color: #70ad47 !important;
-// }
 
 .browse {
   .title {
