@@ -23,7 +23,7 @@
 
 <script setup>
 import { getViralInsectData } from '@/api/browse'
-import { ref, onMounted, computed, watch, onBeforeMount } from 'vue'
+import { ref, onMounted, computed, watch, onBeforeUnmount } from 'vue'
 import { useRoute } from 'vue-router'
 import { useTableStore } from '@/stores/table'
 const keyWords = ref('')
@@ -31,6 +31,7 @@ const route = useRoute()
 const mode = ref('')
 const tableStore = useTableStore()
 const stop = watch(() => tableStore.tableType, async () => {
+  console.log('tableType change')
   pagination.value.page = 1
   await getTableData()
 })
@@ -237,7 +238,7 @@ const getTableData = async () => {
 onMounted(async () => {
   await getTableData()
 })
-onBeforeMount(async () => {
+onBeforeUnmount(async () => {
   stop()
 })
 </script>
