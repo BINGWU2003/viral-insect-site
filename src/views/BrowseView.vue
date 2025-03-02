@@ -23,18 +23,14 @@
 
 <script setup>
 import { getViralInsectData } from '@/api/browse'
-import { ref, onMounted, computed, watch, onBeforeUnmount } from 'vue'
+import { ref, onMounted, computed, onBeforeUnmount } from 'vue'
 import { useRoute } from 'vue-router'
 import { useTableStore } from '@/stores/table'
+import eventBus from '@/utils/event-bus'
 const keyWords = ref('')
 const route = useRoute()
 const mode = ref('')
 const tableStore = useTableStore()
-const stop = watch(() => tableStore.tableType, async () => {
-  console.log('tableType change')
-  pagination.value.page = 1
-  await getTableData()
-})
 const filterContent = [
   {
     name: 'Non-Persistent Transmission',
@@ -236,10 +232,13 @@ const getTableData = async () => {
   pagination.value.itemCount = res.data.data.total
 }
 onMounted(async () => {
+  eventBus.on('tableTypeChanged', async () => {
+    await getTableData()
+  })
   await getTableData()
 })
-onBeforeUnmount(async () => {
-  stop()
+onBeforeUnmount(() => {
+  eventBus.off('tableTypeChanged')
 })
 </script>
 
