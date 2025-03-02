@@ -26,6 +26,8 @@ import { ref, computed } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 const router = useRouter()
 const route = useRoute()
+import { useTableStore } from '@/stores/table'
+const tableStore = useTableStore()
 const routes = ref([
   { name: 'Home', path: '/' },
   { name: 'Browse', path: '/browse' },
@@ -48,7 +50,7 @@ const handleChange = (name) => {
   router.push(route.path)
 }
 const handleSelect = (key) => {
-  console.log(key)
+  tableStore.setTableType(options.findIndex((option) => option.label === key) + 1)
 }
 </script>
 

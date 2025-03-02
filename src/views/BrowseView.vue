@@ -15,8 +15,8 @@
       </div>
     </div>
     <div class="table">
-      <n-data-table :columns="columns" :data="data" :pagination="pagination" :bordered="false" @update:page="onChange"
-        @update:page-size="onUpdatePageSize" striped remote />
+      <n-data-table :columns="currentColums" :data="data" :pagination="pagination" :bordered="false"
+        @update:page="onChange" @update:page-size="onUpdatePageSize" striped remote />
     </div>
   </div>
 </template>
@@ -25,9 +25,11 @@
 import { getViralInsectData } from '@/api/browse'
 import { ref, onMounted, computed } from 'vue'
 import { useRoute } from 'vue-router'
+import { useTableStore } from '@/stores/table'
 const keyWords = ref('')
 const route = useRoute()
 const mode = ref('')
+const tableStore = useTableStore()
 const filterContent = [
   {
     name: 'Non-Persistent Transmission',
@@ -48,10 +50,101 @@ const filterContent = [
     name: 'Circulative, Persistent Non-Propagative Transmission',
   }
 ]
+const currentColums = computed(() => {
+  const tableType = tableStore.tableType
+  if (tableType === 1) {
+    return columns
+  } else if (tableType === 2) {
+    return columns1
+  } else if (tableType === 3) {
+    return columns2
+  } else {
+    return columns
+  }
+})
 const currentSelectMode = computed(() => {
   return mode.value || route.query.mode || ''
 })
+const currentKeyWords = computed(() => {
+  return keyWords.value || route.query.name || ''
+})
 const columns = [
+  {
+    title: 'Virus Family',
+    key: 'virusFamily'
+  },
+  {
+    title: 'Virus Genus',
+    key: 'vectorGenus'
+  },
+  {
+    title: 'Virus',
+    key: 'virusName'
+  },
+  {
+    title: 'Virus TaxID',
+    key: 'vectorTaxId'
+  },
+  {
+    title: 'Vector Order',
+    key: 'vectorOrder'
+  },
+  {
+    title: 'Vector Family',
+    key: 'vectorFamily'
+  },
+  {
+    title: 'Vector Genus',
+    key: 'vectorGenus'
+  },
+  {
+    title: 'Vector',
+    key: 'vector'
+  },
+  {
+    title: 'Virus Mode',
+    key: 'virusExistencePattern'
+  }
+]
+const columns1 = [
+  {
+    title: 'VirusFamily',
+    key: 'virusFamily'
+  },
+  {
+    title: 'VirusGenus',
+    key: 'vectorGenus'
+  },
+  {
+    title: 'Virus',
+    key: 'virusName'
+  },
+  {
+    title: 'VirusTaxID',
+    key: 'vectorTaxId'
+  },
+  {
+    title: 'VectorOrder',
+    key: 'vectorOrder'
+  },
+  {
+    title: 'VectorFamily',
+    key: 'vectorFamily'
+  },
+  {
+    title: 'VectorGenus',
+    key: 'vectorGenus'
+  },
+  {
+    title: 'Vector',
+    key: 'vector'
+  },
+  {
+    title: 'VirusMode',
+    key: 'virusExistencePattern'
+  }
+]
+const columns2 = [
   {
     title: 'VirusFamily',
     key: 'virusFamily'
@@ -126,21 +219,24 @@ const getTableData = async () => {
     current: pagination.value.page,
     size: pagination.value.pageSize,
     virusExistencePattern: currentSelectMode.value,
-    keyWords: keyWords.value
+    keyWords: currentKeyWords.value
   }
-  const res = await getViralInsectData(params)
+  const getDataFun = {
+    1: getViralInsectData,
+    // 2: getViralPlantData,
+    // 3: getViralPlantInsectData
+  }
+  const res = await getDataFun[tableStore.tableType](params)
   data.value = res.data.data.records
   pagination.value.itemCount = res.data.data.total
 }
 onMounted(async () => {
   await getTableData()
-
 })
 
 </script>
 
 <style lang="scss" scoped>
-
 .browse {
   .title {
     padding: 20px 0;
@@ -198,7 +294,7 @@ onMounted(async () => {
     }
   }
 
-        .table {
+  .table {
     margin: 0 auto;
   }
 }

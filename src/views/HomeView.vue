@@ -48,8 +48,8 @@
           <div class="news">
             <h1>Selected vector index</h1>
             <div class="content">
-              <template v-for="(item, index) in insectFamilies" :key="index">
-                <SelectItem :name="item.name" imageType="virus"></SelectItem>
+              <template v-for="(item, indexInsect) in insectFamilies" :key="indexInsect">
+                <SelectItem :name="item.name" imageType="virus" @select="handleClickInsect"></SelectItem>
               </template>
             </div>
           </div>
@@ -71,7 +71,7 @@
           <div class="news">
             <h1>Selected viral families</h1>
             <p class="content">
-              <template v-for="(item, index) in virusFamilies" :key="index">
+              <template v-for="(item, indexVirus) in virusFamilies" :key="indexVirus">
                 <SelectItem :name="item.name" imageType="vector" @select="handleSelectViral"></SelectItem>
               </template>
             </p>
@@ -98,6 +98,8 @@
 <script setup>
 import SelectItem from '@/components/select-item/index.vue'
 import { useRouter } from 'vue-router'
+import { useTableStore } from '@/stores/table'
+const tableStore = useTableStore()
 const router = useRouter()
 const topNav = [
   {
@@ -198,6 +200,7 @@ const virusFamilies = [
   { id: 32, name: 'Chuviridae' },
 ]
 const handleClickFilterContent = (name) => {
+  tableStore.setTableType(1)
   router.push({
     name: 'browse',
     query: {
@@ -205,7 +208,9 @@ const handleClickFilterContent = (name) => {
     }
   })
 }
+
 const handleSelectViral = (name, type) => {
+  tableStore.setTableType(1)
   router.push({
     name: 'browse',
     query: {
@@ -215,6 +220,15 @@ const handleSelectViral = (name, type) => {
   })
 }
 
+const handleClickInsect = (name) => {
+  tableStore.setTableType(1)
+  router.push({
+    name: 'browse',
+    query: {
+      name
+    }
+  })
+}
 </script>
 
 <style lang="scss" scoped>

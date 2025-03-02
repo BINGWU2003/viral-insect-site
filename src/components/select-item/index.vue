@@ -6,7 +6,9 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import vrial from '@/assets/viral1.png'
+import insect from '@/assets/昆虫.png'
+import { computed } from 'vue'
 const props = defineProps({
   name: {
     type: String,
@@ -18,7 +20,7 @@ const props = defineProps({
   }
 })
 const imageSrc = computed(() => {
-  return props.imageType === 'vector' ? 'src/assets/viral1.png' : 'src/assets/昆虫.png'
+  return props.imageType === 'vector' ? vrial : insect
 })
 const emtis = defineEmits(['select'])
 const handleClick = () => {
