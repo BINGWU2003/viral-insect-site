@@ -30,7 +30,7 @@
 
 <script setup>
 import { ref } from 'vue'
-const currentSelectPredictMode = ref('')
+const currentSelectPredictMode = ref('Gene')
 const value = ref('')
 const fileInput = ref(null)
 
