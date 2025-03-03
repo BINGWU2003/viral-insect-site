@@ -2,7 +2,8 @@
   <div class="predict-mode">
     <h1 class="title">Predict plant virus transmission patterns</h1>
     <div class="input-text">
-      <n-input v-model:value="value" type="textarea" placeholder="" />
+      <n-input v-model:value="textValue" type="textarea" placeholder="" />
+      <n-input v-model:value="result" type="textarea" placeholder="" style="margin-left: 20px;"/>
     </div>
     <div class="buttons">
       <div class="button-group">
@@ -30,8 +31,10 @@
 
 <script setup>
 import { ref } from 'vue'
+import { predictGene } from '@/api/browse'
 const currentSelectPredictMode = ref('Gene')
-const value = ref('')
+const textValue = ref('')
+const result = ref('')
 const fileInput = ref(null)
 
 const selectFile = () => {
@@ -45,23 +48,39 @@ const handleFileChange = (event) => {
   if (file) {
     const reader = new FileReader()
     reader.onload = (e) => {
-      value.value = e.target.result
+      textValue.value = e.target.result
     }
     reader.readAsText(file)
+    event.target.value = ''
   }
 }
 
-const handleSubmit = () => {
-  const data = value.value.trim()
+const handleSubmit = async () => {
+  const data = textValue.value.trim()
   if (!data) {
     return
   }
-  console.log('Submitted text:', value.value)
-  // 你可以在这里处理提交的文本，例如发送到服务器
+  const fun = {
+    'Gene': predictGene,
+    // Protein: predictProtein
+  }
+  try {
+    const res = await fun[currentSelectPredictMode.value]({ data })
+    result.value = res.data.data.map((item) => {
+      let data = ''
+      for (const key in item) {
+        data += `${key}: ${item[key]} `
+      }
+      data += '\n'
+      return data
+    }).join('')
+  } catch (error) {
+    console.error(error)
+  }
 }
 
 const clearText = () => {
-  value.value = ''
+  textValue.value = ''
 }
 </script>
 

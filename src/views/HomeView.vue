@@ -214,7 +214,7 @@ const handleSelectViral = (name, type) => {
   router.push({
     name: 'browse',
     query: {
-      name,
+      virusFamily: name,
       type
     }
   })
@@ -225,7 +225,7 @@ const handleClickInsect = (name) => {
   router.push({
     name: 'browse',
     query: {
-      name
+      vectorFamily: name
     }
   })
 }

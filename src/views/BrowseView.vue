@@ -22,7 +22,7 @@
 </template>
 
 <script setup>
-import { getViralInsectData } from '@/api/browse'
+import { getViralInsectData, getViralPlantData, getViralPlantInsectData } from '@/api/browse'
 import { ref, onMounted, computed, onBeforeUnmount } from 'vue'
 import { useRoute } from 'vue-router'
 import { useTableStore } from '@/stores/table'
@@ -109,74 +109,78 @@ const columns = [
 ]
 const columns1 = [
   {
-    title: 'VirusFamily',
+    title: 'Virus Family',
     key: 'virusFamily'
   },
   {
-    title: 'VirusGenus',
-    key: 'vectorGenus'
+    title: 'Virus Genus',
+    key: 'virusGenus'
   },
   {
     title: 'Virus',
     key: 'virusName'
   },
   {
-    title: 'VirusTaxID',
-    key: 'vectorTaxId'
+    title: 'Virus TaxID',
+    key: 'virusTaxId'
   },
   {
-    title: 'VectorOrder',
-    key: 'vectorOrder'
+    title: 'Host TaxId',
+    key: 'hostTaxId'
   },
   {
-    title: 'VectorFamily',
-    key: 'vectorFamily'
+    title: 'Host Name',
+    key: 'hostName'
   },
   {
-    title: 'VectorGenus',
-    key: 'vectorGenus'
-  },
-  {
-    title: 'Vector',
-    key: 'vector'
-  },
-  {
-    title: 'VirusMode',
+    title: 'Virus Mode',
     key: 'virusExistencePattern'
   }
 ]
 const columns2 = [
   {
-    title: 'VirusFamily',
+    title: 'Virus Family',
     key: 'virusFamily'
   },
   {
-    title: 'VirusGenus',
-    key: 'vectorGenus'
+    title: 'Virus Genus',
+    key: 'virusGenus'
   },
   {
     title: 'Virus',
     key: 'virusName'
   },
   {
-    title: 'VirusTaxID',
+    title: 'Virus TaxID',
     key: 'vectorTaxId'
   },
   {
-    title: 'VectorOrder',
+    title: 'Host Name',
+    key: 'hostName'
+  },
+  {
+    title: 'Host TaxId',
+    key: 'hostTaxId'
+  },
+  {
+    title: 'Vector Order',
     key: 'vectorOrder'
   },
   {
-    title: 'VectorFamily',
+    title: 'Vector Family',
     key: 'vectorFamily'
   },
   {
-    title: 'VectorGenus',
+    title: 'Vector Genus',
     key: 'vectorGenus'
   },
   {
     title: 'Vector',
     key: 'vector'
+  },
+  {
+    title: 'Vector TaxId',
+    key: 'vectorTaxId'
   },
   {
     title: 'VirusMode',
@@ -190,7 +194,7 @@ const pagination = ref({
   pageSize: 5,
   showSizePicker: true,
   pageSizes: [3, 5, 7],
-  itemCount: 1,
+  itemCount: 0,
   prefix: () => { //分页前缀
     return `Total is ${pagination.value.itemCount}.`
   },
@@ -219,13 +223,15 @@ const getTableData = async () => {
   const params = {
     current: pagination.value.page,
     size: pagination.value.pageSize,
-    virusExistencePattern: currentSelectMode.value,
-    keyWords: currentKeyWords.value
+    virusExistencePattern: currentSelectMode.value === 'Unknow' ? '' : currentSelectMode.value,
+    keyWords: currentKeyWords.value,
+    virusFamily: route.query.virusFamily || '',
+    vectorFamily: route.query.vectorFamily || '',
   }
   const getDataFun = {
     1: getViralInsectData,
-    // 2: getViralPlantData,
-    // 3: getViralPlantInsectData
+    2: getViralPlantData,
+    3: getViralPlantInsectData
   }
   const res = await getDataFun[tableStore.tableType](params)
   data.value = res.data.data.records
@@ -233,6 +239,7 @@ const getTableData = async () => {
 }
 onMounted(async () => {
   eventBus.on('tableTypeChanged', async () => {
+    pagination.value.page = 1
     await getTableData()
   })
   await getTableData()
