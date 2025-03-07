@@ -104,8 +104,8 @@ const router = useRouter()
 const topNav = [
   {
     content1: 'Non-Persistent Transmission',
-    content2: 'Non-Circulative, Semi-Persistent Transmission',
-    content3: 'Circulative, Non-Propagative Transmission',
+    content2: 'Non-Persistent Transmission',
+    content3: 'Non-Circulative, Semi-Persistent Transmission',
     backgroundColor: '#f9f2fe',
     borderColor: '#d786ff',
   },

@@ -183,7 +183,7 @@ const columns2 = [
     key: 'vectorTaxId'
   },
   {
-    title: 'VirusMode',
+    title: 'Virus Mode',
     key: 'virusExistencePattern'
   }
 ]
@@ -223,7 +223,7 @@ const getTableData = async () => {
   const params = {
     current: pagination.value.page,
     size: pagination.value.pageSize,
-    virusExistencePattern: currentSelectMode.value === 'Unknow' ? '' : currentSelectMode.value,
+    virusExistencePattern: currentSelectMode.value,
     keyWords: currentKeyWords.value,
     virusFamily: route.query.virusFamily || '',
     vectorFamily: route.query.vectorFamily || '',
