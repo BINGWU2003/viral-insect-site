@@ -209,13 +209,12 @@ const handleClickFilterContent = (name) => {
   })
 }
 
-const handleSelectViral = (name, type) => {
+const handleSelectViral = (name) => {
   tableStore.setTableType(1)
   router.push({
     name: 'browse',
     query: {
-      virusFamily: name,
-      type
+      virusFamily: name
     }
   })
 }

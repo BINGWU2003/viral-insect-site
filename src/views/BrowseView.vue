@@ -31,6 +31,7 @@ const keyWords = ref('')
 const route = useRoute()
 const mode = ref('')
 const tableStore = useTableStore()
+let queryMode = route.query.mode
 const filterContent = [
   {
     name: 'Non-Persistent Transmission',
@@ -64,10 +65,10 @@ const currentColums = computed(() => {
   }
 })
 const currentSelectMode = computed(() => {
-  return mode.value || route.query.mode || ''
+  return mode.value || queryMode || ''
 })
 const currentKeyWords = computed(() => {
-  return keyWords.value || route.query.name || ''
+  return keyWords.value || ''
 })
 const columns = [
   {
@@ -101,6 +102,10 @@ const columns = [
   {
     title: 'Vector',
     key: 'vector'
+  },
+  {
+    title: 'Vector TaxId',
+    key: 'vectorTaxId'
   },
   {
     title: 'Virus Mode',
@@ -211,6 +216,7 @@ const onUpdatePageSize = async (pageSize) => {
 }
 
 const handleClickMode = async (name) => {
+  queryMode = ''
   name === mode.value && (name = '')
   mode.value = name
   await getTableData()
