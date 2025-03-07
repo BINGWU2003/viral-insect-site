@@ -6,6 +6,9 @@ const getViralInsectData = (params) => {
 const predictGene = (params) => {
   return instance.post('/predict/gene', params)
 }
+const predictProtein = (params) => {
+  return instance.post('/predict/protein', params)
+}
 const getViralPlantData = (params) => {
   return instance.post('/virus-plant-infection-relationships/list', params)
 }
@@ -16,5 +19,6 @@ export {
   getViralInsectData,
   predictGene,
   getViralPlantData,
-  getViralPlantInsectData
+  getViralPlantInsectData,
+  predictProtein
 }

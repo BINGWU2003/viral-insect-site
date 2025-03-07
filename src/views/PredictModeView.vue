@@ -1,4 +1,7 @@
 <template>
+   <n-message-provider placement="top-right">
+
+  </n-message-provider>
   <div class="predict-mode">
     <h1 class="title">Predict plant virus transmission patterns</h1>
     <div class="input-text">
@@ -31,7 +34,9 @@
 
 <script setup>
 import { ref } from 'vue'
-import { predictGene } from '@/api/browse'
+import { predictGene, predictProtein } from '@/api/browse'
+import { useMessage } from 'naive-ui'
+const message = useMessage()
 const currentSelectPredictMode = ref('Gene')
 const textValue = ref('')
 const result = ref('')
@@ -60,9 +65,13 @@ const handleSubmit = async () => {
   if (!data) {
     return
   }
+  if(data.length > 10000) {
+    message.error('The input text is too long, please input again.')
+    return
+  }
   const fun = {
     'Gene': predictGene,
-    // Protein: predictProtein
+    'Protein': predictProtein
   }
   try {
     const res = await fun[currentSelectPredictMode.value]({ data })

@@ -4,7 +4,9 @@ import Layout from '@/layout/index.vue'
 </script>
 
 <template>
-  <Layout>
-    <RouterView />
-  </Layout>
+  <n-message-provider placement="bottom">
+    <Layout>
+      <RouterView />
+    </Layout>
+  </n-message-provider>
 </template>

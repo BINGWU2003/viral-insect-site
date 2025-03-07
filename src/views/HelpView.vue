@@ -21,7 +21,7 @@ const article = ref([
     content: 'In the browse page, all entries in the plant virus database are listed. You can search the data by the column names given, such as virus name, virus ID, etc.'
   },{
     title: '3. Predict Mode',
-    content: 'n the predict page, you can input the virus cp protein sequence or gene sequence you want to predict, and then return the prediction result. The file format you need to input is fasta format'
+    content: 'In the predict page, you can input the virus cp protein sequence or gene sequence you want to predict, and then return the prediction result. The file format you need to input is fasta format'
   }
 ])
 </script>
