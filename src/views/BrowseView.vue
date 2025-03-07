@@ -84,7 +84,7 @@ const columns = [
   },
   {
     title: 'Virus TaxID',
-    key: 'vectorTaxId'
+    key: 'virusTaxId'
   },
   {
     title: 'Vector Order',
