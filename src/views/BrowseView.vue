@@ -211,6 +211,7 @@ const onUpdatePageSize = async (pageSize) => {
 }
 
 const handleClickMode = async (name) => {
+  name === mode.value && (name = '')
   mode.value = name
   await getTableData()
 }
