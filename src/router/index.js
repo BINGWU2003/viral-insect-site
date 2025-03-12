@@ -22,6 +22,11 @@ const router = createRouter({
       path: '/help',
       name: 'help',
       component: () => import('../views/HelpView.vue'),
+    },
+    {
+      path: '/predict-data',
+      name: 'predict-data',
+      component: () => import('../views/PredictDataView.vue'),
     }
   ],
 })

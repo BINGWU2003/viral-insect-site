@@ -20,33 +20,40 @@
     </div>
     <div class="home-center-content">
       <div class="article">
-        <h1>Welcome to Virus- Plant –Insect DB !</h1>
+        <h1>Welcome to Virus-Plant-Insect DB</h1>
         <p>
-          This virus-plant-insect database provides information about plant viruses,insects that spread the virus, and
-          plant hosts infected by the virus.It also provides the function of predicting virus transmission patterns.
-          This virus-plant-insect database provides information about plant viruses,insects that spread the virus, and
-          plant hosts infected by the virus.It also provides the function of predicting virus transmission patterns.This
-          virus-plant-insect database provides information about plant viruses,insects that spread the virus, and
-          plant hosts infected by the virus.It also provides the function of predicting virus transmission patterns.This
-          virus-plant-insect database provides information about plant viruses,insects that spread the virus, and
-          plant hosts infected by the virus.It also provides the function of predicting virus transmission patterns.
+          VPI-DB integrates data on the relationships among viruses, plant hosts, and vector insects, represented in the
+          form of NCBI taxonomy IDs for these viruses, plant hosts, and insects. The database encompasses 457 plant
+          viruses, 394 plant hosts, and 108 insect vectors, and also provides functionality for predicting virus
+          transmission patterns.
         </p>
       </div>
       <div class="news">
         <h1 class="title-border">News</h1>
-        <p>2023-12-29</p>
-        <p class="content">Li Yi | The "behind-the-scenes pioneer" in fighting plant virusesLi Yi | The
-          "behind-the-scenes pioneer" in fighting plant viruses Li Yi | The "behind-the-scenes pioneer" in fighting
-          plant viruses Li Yi | The "behind-the-scenes pioneer" in fighting plant viruses Li Yi | The "behind-the-scenes
-          pioneer" in fighting plant viruses Li Yi | The "behind-the-scenes pioneer" in fighting plant viruses Li Yi |
-          The "behind-the-scenes pioneer" in fighting plant viruses </p>
+        <p>August 22, 2023:</p>
+        <p class="content" style="display: flex;height: 80px;">
+          Retrieved plant virus-related literature and collected relevant data.
+
+          December 2, 2023:
+
+          Supplemented the dataset with virus entries from the GPI-base database.
+
+          February 26, 2024:
+
+          Downloaded viral protein and genome sequences from the NCBI database and used these sequences to train
+          predictive models.
+
+          March 10, 2025:
+
+          Successfully launched the website, integrating all compiled data and analytical tools.
+        </p>
       </div>
     </div>
     <div class="home-bottom-content">
       <div class="home-bottom-content-left">
         <div style="width: 70%;">
           <div class="news">
-            <h1>Selected vector index</h1>
+            <h1>Selected vector families</h1>
             <div class="content">
               <template v-for="(item, indexInsect) in insectFamilies" :key="indexInsect">
                 <SelectItem :name="item.name" imageType="virus" @select="handleClickInsect"></SelectItem>
@@ -59,7 +66,7 @@
         <h1 class="news title-border">
           Related links
         </h1>
-        <div style="margin-top: 10px;">
+        <div style="margin-top: 10px;font-size: 18px;">
           <div v-for="(item) in relatedLinks" :href="url" :key="item.url" style="cursor: pointer;"
             @click="navigateTo(item.url)">{{ item.name }}</div>
         </div>
@@ -88,9 +95,11 @@
       </div>
     </div>
     <div class="author-info">
-      <p>For follow-up questions, please contact Dr. Zhang Zheng@邮箱</p>
+      <p>For follow-up questions, please contact Dr. Zhang Zheng</p>
+      <p>Email: zhang2022@hunau.edu.cn</p>
+      <p>google scholar:https://scholar.google.com.hk/citations?user=wLLSZQcAAAAJ&hl=zh-CN</p>
       <p>Hunan Agricultural University,Changsha, China</p>
-      <p>Data last updated on XXXX</p>
+      <p>Cite us:Tao Deng,Hongyan Zhang,Zheng Zhang.Virus-Plant-Insect DB</p>
     </div>
   </div>
 </template>
@@ -288,7 +297,7 @@ const handleClickInsect = (name) => {
       padding: 20px;
       border-radius: 6px;
       border: 3px solid #70ad47;
-
+      padding-bottom: 0;
       h1 {
         color: #385723;
       }

@@ -1,12 +1,17 @@
 <template>
-   <n-message-provider placement="top-right">
+  <n-message-provider placement="top-right">
 
   </n-message-provider>
   <div class="predict-mode">
     <h1 class="title">Predict plant virus transmission patterns</h1>
     <div class="input-text">
-      <n-input v-model:value="textValue" type="textarea" placeholder="" />
-      <n-input v-model:value="result" type="textarea" placeholder="" style="margin-left: 20px;"/>
+      <n-input v-model:value="textValue" type="textarea" placeholder=">YP_009175082.1|1|coat protein
+MPKREAPWRAMAGSSKVSRALNYSPRGGIRPKFDKASAWVNRPMYRKPRIYRTMRGPDIP
+KGCEGPCKVQSYEQRHDVSHVGKVMCISDITRGNGITHRVGKRFCVKSVYILGKVWMDDN
+IKLKNHTNSVMFWLVRDRRPYGTPMDFGQVFNMFDNEPSTATVKNDLRDRFQVMHKFYAK
+VTGGQYASNEQALVRRFWKVNNPCDLQPSGGREIREPYGERLVIVYGMYSCVYPVYATLK
+IRIYFYDSISN" />
+      <n-input v-model:value="result" type="textarea" placeholder="" style="margin-left: 20px;" />
     </div>
     <div class="buttons">
       <div class="button-group">
@@ -21,9 +26,9 @@
       <div class="mode-button">
         <div class="bottom">
           <div style="flex: 1;" class="button-style" @click="selectPredictMode('Gene')"
-            :style="{ backgroundColor: currentSelectPredictMode === 'Gene' ? '#548235' : '#c5e0b4' }">Gene</div>
+            :style="{ backgroundColor: currentSelectPredictMode === 'Gene' ? '#548235' : '#a9d18e' }">Gene</div>
           <div style="flex: 1;"
-            :style="{ backgroundColor: currentSelectPredictMode === 'Protein' ? '#548235' : '#c5e0b4' }"
+            :style="{ backgroundColor: currentSelectPredictMode === 'Protein' ? '#548235' : '#a9d18e' }"
             class="button-style" @click="selectPredictMode('Protein')">Protein</div>
         </div>
       </div>
@@ -65,7 +70,7 @@ const handleSubmit = async () => {
   if (!data) {
     return
   }
-  if(data.length > 10000) {
+  if (data.length > 10000) {
     message.error('The input text is too long, please input again.')
     return
   }

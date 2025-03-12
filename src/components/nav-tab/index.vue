@@ -5,7 +5,7 @@
         <template #tab v-if="name === 'Browse'">
           <div style="display: flex;align-items: center;">
             {{ name }}
-            <n-dropdown trigger="click" :options="options" @select="handleSelect">
+            <n-dropdown trigger="hover" :options="options" @select="handleSelect">
               <div style="display: flex;align-items: center;">
                 <n-icon size="20">
                   <MdArrowDropdown />

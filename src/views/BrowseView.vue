@@ -3,15 +3,17 @@
     <h1 class="title">All virus-plant-insect interactions in Database</h1>
     <div class="search">
       <div class="search-input">
-        <n-input v-model:value="keyWords" type="text" placeholder="Search virus" @keyup.enter="handleSearch" />
+        <n-input v-model:value="keyWords" type="text" placeholder="Search virus, host, vector and Transmisson mode"
+          @keyup.enter="handleSearch" />
         <div class="search-button" @click="handleSearch">search</div>
       </div>
-      <div class="filter-content">
-        <div v-for="(item, index) in filterContent" :key="index"
-          :style="{ backgroundColor: currentSelectMode === item.name ? '#548235' : '#c5e0b4' }"
-          @click="handleClickMode(item.name)">
-          {{ item.name }}
-        </div>
+
+    </div>
+    <div class="filter-content">
+      <div v-for="(item, index) in filterContent" :key="index"
+        :style="{ backgroundColor: currentSelectMode === item.name ? '#548235' : '#c5e0b4' }"
+        @click="handleClickMode(item.name)">
+        {{ item.name }}
       </div>
     </div>
     <div class="table">
@@ -104,11 +106,11 @@ const columns = [
     key: 'vector'
   },
   {
-    title: 'Vector TaxId',
+    title: 'Vector TaxID',
     key: 'vectorTaxId'
   },
   {
-    title: 'Virus Mode',
+    title: 'Virus Transmission Mode',
     key: 'virusExistencePattern'
   }
 ]
@@ -130,15 +132,15 @@ const columns1 = [
     key: 'virusTaxId'
   },
   {
-    title: 'Host TaxId',
-    key: 'hostTaxId'
-  },
-  {
-    title: 'Host Name',
+    title: 'Host',
     key: 'hostName'
   },
   {
-    title: 'Virus Mode',
+    title: 'Host TaxID',
+    key: 'hostTaxId'
+  },
+  {
+    title: 'Virus Transmission Mode',
     key: 'virusExistencePattern'
   }
 ]
@@ -157,14 +159,14 @@ const columns2 = [
   },
   {
     title: 'Virus TaxID',
-    key: 'vectorTaxId'
+    key: 'virusTaxId'
   },
   {
-    title: 'Host Name',
+    title: 'Host',
     key: 'hostName'
   },
   {
-    title: 'Host TaxId',
+    title: 'Host TaxID',
     key: 'hostTaxId'
   },
   {
@@ -184,11 +186,11 @@ const columns2 = [
     key: 'vector'
   },
   {
-    title: 'Vector TaxId',
+    title: 'Vector TaxID',
     key: 'vectorTaxId'
   },
   {
-    title: 'Virus Mode',
+    title: 'Virus Transmission Mode',
     key: 'virusExistencePattern'
   }
 ]
@@ -272,7 +274,7 @@ onBeforeUnmount(() => {
     align-items: center;
     justify-content: center;
     margin: 20px auto;
-
+    margin-bottom: 0;
     .search-input {
       display: flex;
       width: 100%;
@@ -284,33 +286,35 @@ onBeforeUnmount(() => {
         justify-content: center;
         align-items: center;
         width: 60px;
-        color: #548235;
-        border: 2px solid #548235;
+        color: black;
+        border: 2px solid #2b4719;
         border-radius: 6px;
         cursor: pointer;
         background-color: #c5e0b4
       }
     }
 
-    .filter-content {
-      width: 100%;
-      display: grid;
-      grid-template-columns: repeat(3, 150px);
-      gap: 20px;
-      justify-content: space-between;
 
-      div {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: black;
-        padding: 10px;
-        border: 2px solid #2b4719;
-        border-radius: 6px;
-        cursor: pointer;
-        background-color: #c5e0b4;
+  }
 
-      }
+  .filter-content {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 20px;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: black;
+      padding: 10px;
+      border: 2px solid #2b4719;
+      border-radius: 6px;
+      cursor: pointer;
+      background-color: #c5e0b4;
+
     }
   }
 
