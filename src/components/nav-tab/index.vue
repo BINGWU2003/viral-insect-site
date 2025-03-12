@@ -1,6 +1,6 @@
 <template>
   <div class="nav-tab">
-    <n-tabs type="line" animated size="large" @update:value="handleChange" :value="tabValue">
+    <n-tabs type="line" animated size="large" @update:value="handleChange" :value="tabValue" :tab-style="{ fontWeight: '700',fontFamily: 'Microsoft YaHei' }">
       <n-tab-pane v-for="({ name, path }) in routes" :name="name" :tab="name" :key="path">
         <template #tab v-if="name === 'Browse'">
           <div style="display: flex;align-items: center;">
@@ -37,7 +37,7 @@ const routes = ref([
 const options = [
   { label: 'By Virus-Insect', key: 'By Virus-Insect' },
   { label: 'By Virus-Plant', key: 'By Virus-Plant' },
-  { label: 'By Virus-Plant And Virus-Insect', key: 'By Virus-Plant And Virus-Insect' }
+  { label: 'By Virus-Plant-Insect', key: 'By Virus-Plant-Insect' }
 ]
 const tabValue = computed({
   get: () => {

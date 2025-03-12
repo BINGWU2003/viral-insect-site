@@ -20,7 +20,7 @@
     </div>
     <div class="home-center-content">
       <div class="article">
-        <h1>Welcome to Virus-Plant-Insect DB</h1>
+        <h1 style="font-family: 'Microsoft YaHei';">Welcome to Virus-Plant-Insect DB</h1>
         <p>
           VPI-DB integrates data on the relationships among viruses, plant hosts, and vector insects, represented in the
           form of NCBI taxonomy IDs for these viruses, plant hosts, and insects. The database encompasses 457 plant
@@ -30,23 +30,27 @@
       </div>
       <div class="news">
         <h1 class="title-border">News</h1>
-        <p>August 22, 2023:</p>
-        <p class="content" style="display: flex;height: 80px;">
-          Retrieved plant virus-related literature and collected relevant data.
-
-          December 2, 2023:
-
-          Supplemented the dataset with virus entries from the GPI-base database.
-
-          February 26, 2024:
-
-          Downloaded viral protein and genome sequences from the NCBI database and used these sequences to train
-          predictive models.
-
-          March 10, 2025:
-
-          Successfully launched the website, integrating all compiled data and analytical tools.
-        </p>
+        <div class="content" style="display: block;">
+          <p>2023-8-22:</p>
+          <p>
+            Retrieved plant virus-related literature and collected relevant data.
+          </p>
+          <p>
+            2023-12-2：
+          </p>
+          <p>
+            Supplemented the dataset with virus entries from the GPI-base database.
+          </p>
+          <p>2024-2-26：</p>
+          <p>
+            Downloaded viral protein and genome sequences from the NCBI database and used these sequences to train
+            predictive models.
+          </p>
+          <p>2025-3-10：</p>
+          <p>
+            Successfully launched the website, integrating all compiled data and analytical tools.
+          </p>
+        </div>
       </div>
     </div>
     <div class="home-bottom-content">
@@ -66,7 +70,7 @@
         <h1 class="news title-border">
           Related links
         </h1>
-        <div style="margin-top: 10px;font-size: 18px;">
+        <div style="margin-top: 10px;font-size: 20px;">
           <div v-for="(item) in relatedLinks" :href="url" :key="item.url" style="cursor: pointer;"
             @click="navigateTo(item.url)">{{ item.name }}</div>
         </div>
@@ -298,6 +302,7 @@ const handleClickInsect = (name) => {
       border-radius: 6px;
       border: 3px solid #70ad47;
       padding-bottom: 0;
+
       h1 {
         color: #385723;
       }

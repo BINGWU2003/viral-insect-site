@@ -1,6 +1,8 @@
 <template>
   <div class="select-item" @click="handleClick">
-    <img :src="imageSrc" alt="">
+    <div class="dot">
+
+    </div>
     {{ props.name }}
   </div>
 </template>
@@ -35,12 +37,13 @@ const handleClick = () => {
   justify-content: flex-start;
   cursor: pointer;
   color: #305493;
-
-  img {
-    width: 20px;
-    height: 20px;
-    object-fit: contain;
-    margin-right: 10px;
+  line-height: 1;
+  .dot {
+    width: 7px;
+    height: 7px;
+    background-color: #305493;
+    border-radius: 50%;
+    margin-right: 4px;
   }
 
 }

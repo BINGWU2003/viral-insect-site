@@ -200,7 +200,7 @@ const pagination = ref({
   page: 1,
   pageSize: 5,
   showSizePicker: true,
-  pageSizes: [3, 5, 7],
+  pageSizes: [5, 10, 15],
   itemCount: 0,
   prefix: () => { //分页前缀
     return `Total is ${pagination.value.itemCount}.`
@@ -265,6 +265,7 @@ onBeforeUnmount(() => {
     text-align: center;
     color: #385723;
     border-bottom: 3px solid #70ad47;
+    font-family: 'Microsoft YaHei';
   }
 
   .search {
@@ -275,6 +276,7 @@ onBeforeUnmount(() => {
     justify-content: center;
     margin: 20px auto;
     margin-bottom: 0;
+
     .search-input {
       display: flex;
       width: 100%;
@@ -286,11 +288,12 @@ onBeforeUnmount(() => {
         justify-content: center;
         align-items: center;
         width: 60px;
-        color: black;
+        color: white;
         border: 2px solid #2b4719;
+        font-weight: 900;
         border-radius: 6px;
         cursor: pointer;
-        background-color: #c5e0b4
+        background-color: #548235
       }
     }
 
@@ -304,6 +307,7 @@ onBeforeUnmount(() => {
     gap: 20px;
     justify-content: space-between;
     margin-bottom: 20px;
+
     div {
       display: flex;
       justify-content: center;

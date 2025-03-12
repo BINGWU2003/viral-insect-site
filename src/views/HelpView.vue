@@ -1,9 +1,9 @@
 <template>
   <div class="help">
     <div v-for="item in article" :key="item.title">
-      <h2 class="title">{{ item.title }}
-      </h2>
-      <p>
+      <h1 class="title">{{ item.title }}
+      </h1>
+      <p style="font-size: 22px;">
         {{ item.content }}
       </p>
     </div>
@@ -28,6 +28,9 @@ const article = ref([
 
 <style lang="scss" scoped>
 .help {
+  .title {
+    font-family: "Microsoft YaHei";
+  }
   p {
     text-indent: 2em;
   }
