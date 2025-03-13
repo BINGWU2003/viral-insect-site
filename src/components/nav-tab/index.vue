@@ -50,6 +50,7 @@ const handleChange = (name) => {
   router.push(route.path)
 }
 const handleSelect = (key) => {
+  router.push('/browse')
   tableStore.setTableType(options.findIndex((option) => option.label === key) + 1)
 }
 </script>
