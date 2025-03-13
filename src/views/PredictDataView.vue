@@ -35,29 +35,30 @@ const exportToExcel = async () => {
     const wb = XLSX.utils.book_new()
     const ws = XLSX.utils.json_to_sheet(result.value)
     XLSX.utils.book_append_sheet(wb, ws, 'Prediction Results')
-    const excelBuffer = XLSX.write('Prediction-Results', { bookType: 'xlsx', type: 'array' })
-    const blob = new Blob([excelBuffer], {
-      type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
-    })
-    try {
-      const handle = await window.showSaveFilePicker({
-        suggestedName: 'prediction_results.xlsx',
-        types: [{
-          description: 'Excel文件',
-          accept: {
-            'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet': ['.xlsx']
-          }
-        }]
-      })
+    XLSX.writeFile(wb, 'Prediction-Results.xlsx')
+    // const excelBuffer = XLSX.write(wb, { bookType: 'xlsx', type: 'array' })
 
-      const writable = await handle.createWritable()
-      await writable.write(blob)
-      await writable.close()
-    } catch (err) {
-      XLSX.writeFile(wb, 'Prediction-Results.xlsx')
-      console.error('用户取消保存或浏览器不支持 showSaveFilePicker', err)
+    // const blob = new Blob([excelBuffer], {
+    //   type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+    // })
+    // try {
+    //   const handle = await window.showSaveFilePicker({
+    //     suggestedName: 'prediction_results.xlsx',
+    //     types: [{
+    //       description: 'Excel文件',
+    //       accept: {
+    //         'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet': ['.xlsx']
+    //       }
+    //     }]
+    //   })
 
-    }
+    //   const writable = await handle.createWritable()
+    //   await writable.write(blob)
+    //   await writable.close()
+    // } catch (err) {
+    //   console.error('用户取消保存或浏览器不支持 showSaveFilePicker', err)
+
+    // }
   } catch (error) {
     console.error('导出失败:', error)
   }

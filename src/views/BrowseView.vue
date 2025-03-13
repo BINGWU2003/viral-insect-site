@@ -50,17 +50,18 @@ const filterContent = [
     name: 'Non-Circulative, Semi-Persistent Transmission',
   },
   {
-    name: 'Unknow',
+    name: 'Persistent, circulative',
   },
   {
-    name: 'Persistent, circulative',
+    name: 'Circulative, Persistent Non-Propagative Transmission',
   },
   {
     name: 'Circulative, Persistent-Propagative Transmission',
   },
+
   {
-    name: 'Circulative, Persistent Non-Propagative Transmission',
-  }
+    name: 'Unknow',
+  },
 ]
 const currentColums = computed(() => {
   const tableType = tableStore.tableType
