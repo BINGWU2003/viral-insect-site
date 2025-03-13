@@ -35,7 +35,7 @@ const exportToExcel = async () => {
     const wb = XLSX.utils.book_new()
     const ws = XLSX.utils.json_to_sheet(result.value)
     XLSX.utils.book_append_sheet(wb, ws, 'Prediction Results')
-    const excelBuffer = XLSX.write(wb, { bookType: 'xlsx', type: 'array' })
+    const excelBuffer = XLSX.write('Prediction-Results', { bookType: 'xlsx', type: 'array' })
     const blob = new Blob([excelBuffer], {
       type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
     })
@@ -54,8 +54,9 @@ const exportToExcel = async () => {
       await writable.write(blob)
       await writable.close()
     } catch (err) {
+      XLSX.writeFile(wb, 'Prediction-Results.xlsx')
       console.error('用户取消保存或浏览器不支持 showSaveFilePicker', err)
-      
+
     }
   } catch (error) {
     console.error('导出失败:', error)
