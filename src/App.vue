@@ -1,12 +1,12 @@
 <script setup>
 import { RouterView } from 'vue-router'
-import Layout from '@/layout/index.vue'
+// import { NMessageProvider } from 'naive-ui'
 </script>
 
 <template>
-  <n-message-provider placement="bottom">
-    <Layout>
+  <n-modal-provider>
+    <n-message-provider placement="bottom">
       <RouterView />
-    </Layout>
-  </n-message-provider>
+    </n-message-provider>
+  </n-modal-provider>
 </template>

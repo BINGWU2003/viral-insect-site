@@ -1,52 +1,55 @@
 <template>
-  <n-message-provider placement="top-right">
+  <Layout>
+    <n-message-provider placement="top-right">
 
-  </n-message-provider>
-  <div class="predict-mode">
-    <h1 class="title">Predict plant virus transmission patterns</h1>
-    <div class="input-text">
-      <n-input v-model:value="textValue" type="textarea" placeholder=">YP_009175082.1|1|coat protein
+    </n-message-provider>
+    <div class="predict-mode">
+      <h1 class="title">Predict plant virus transmission patterns</h1>
+      <div class="input-text">
+        <n-input v-model:value="textValue" type="textarea" placeholder=">YP_009175082.1|1|coat protein
 MPKREAPWRAMAGSSKVSRALNYSPRGGIRPKFDKASAWVNRPMYRKPRIYRTMRGPDIP
 KGCEGPCKVQSYEQRHDVSHVGKVMCISDITRGNGITHRVGKRFCVKSVYILGKVWMDDN
 IKLKNHTNSVMFWLVRDRRPYGTPMDFGQVFNMFDNEPSTATVKNDLRDRFQVMHKFYAK
 VTGGQYASNEQALVRRFWKVNNPCDLQPSGGREIREPYGERLVIVYGMYSCVYPVYATLK
 IRIYFYDSISN" />
-      <n-input v-model:value="result" type="textarea" placeholder="" style="margin-left: 20px;" />
-    </div>
-    <div class="buttons">
-      <div class="button-group">
-        <div class="top">
-          <div style="width: 200px;color: black;" class="button-style" @click="handleSubmit">Submit</div>
+      </div>
+      <div class="buttons">
+        <div class="button-group">
+          <div class="top">
+            <div style="width: 200px;color: black;" class="button-style" @click="handleSubmit">Submit</div>
+          </div>
+          <div class="bottom">
+            <div style="flex: 1;" class="button-style" @click="selectFile">File</div>
+            <div style="flex: 1;" class="button-style" @click="clearText">Clear</div>
+          </div>
         </div>
-        <div class="bottom">
-          <div style="flex: 1;" class="button-style" @click="selectFile">File</div>
-          <div style="flex: 1;" class="button-style" @click="clearText">Clear</div>
+        <div class="mode-button">
+          <div class="bottom">
+            <div style="flex: 1;" class="button-style" @click="selectPredictMode('Gene')"
+              :style="{ backgroundColor: currentSelectPredictMode === 'Gene' ? '#548235' : '#a9d18e' }">Gene</div>
+            <div style="flex: 1;"
+              :style="{ backgroundColor: currentSelectPredictMode === 'Protein' ? '#548235' : '#a9d18e' }"
+              class="button-style" @click="selectPredictMode('Protein')">Protein</div>
+          </div>
         </div>
       </div>
-      <div class="mode-button">
-        <div class="bottom">
-          <div style="flex: 1;" class="button-style" @click="selectPredictMode('Gene')"
-            :style="{ backgroundColor: currentSelectPredictMode === 'Gene' ? '#548235' : '#a9d18e' }">Gene</div>
-          <div style="flex: 1;"
-            :style="{ backgroundColor: currentSelectPredictMode === 'Protein' ? '#548235' : '#a9d18e' }"
-            class="button-style" @click="selectPredictMode('Protein')">Protein</div>
-        </div>
-      </div>
+      <input type="file" ref="fileInput" style="display: none;" @change="handleFileChange" accept=".txt" />
     </div>
-    <input type="file" ref="fileInput" style="display: none;" @change="handleFileChange" accept=".txt" />
-  </div>
+  </Layout>
 </template>
 
 <script setup>
 import { ref } from 'vue'
+import Layout from '@/layout/index.vue'
 import { predictGene, predictProtein } from '@/api/browse'
 import { useMessage } from 'naive-ui'
+import { useRouter } from 'vue-router'
 const message = useMessage()
+const router = useRouter()
 const currentSelectPredictMode = ref('Gene')
 const textValue = ref('')
 const result = ref('')
 const fileInput = ref(null)
-
 const selectFile = () => {
   fileInput.value.click()
 }
@@ -81,13 +84,15 @@ const handleSubmit = async () => {
   try {
     const res = await fun[currentSelectPredictMode.value]({ data })
     result.value = res.data.data.map((item) => {
-      let data = ''
-      for (const key in item) {
-        data += `${key}: ${item[key]} `
+      const mapData = {
+        '0': 'Non-Persistent Transmission',
+        '1': 'Persistent, circulative',
       }
-      data += '\n'
-      return data
-    }).join('')
+      item.y_pred = mapData[item.y_pred] || item.y_pred
+      return item
+    })
+    localStorage.setItem('result', JSON.stringify(result.value))
+    router.push('/predict-data')
   } catch (error) {
     console.error(error)
   }

@@ -1,31 +1,38 @@
 <template>
-  <div class="browse">
-    <h1 class="title">All virus-plant-insect interactions in Database</h1>
-    <div class="search">
-      <div class="search-input">
-        <n-input v-model:value="keyWords" type="text" placeholder="Search virus, host, vector and Transmisson mode"
-          @keyup.enter="handleSearch" />
-        <div class="search-button" @click="handleSearch">search</div>
-      </div>
+  <Layout>
+    <div class="browse">
+      <h1 class="title">All virus-plant-insect interactions in Database</h1>
+      <div class="search">
+        <div class="search-input">
+          <n-input v-model:value="keyWords" type="text" placeholder="Search virus, host, vector and Transmisson mode"
+            @keyup.enter="handleSearch" />
+          <div class="search-button" @click="handleSearch">search</div>
+        </div>
 
-    </div>
-    <div class="filter-content">
-      <div v-for="(item, index) in filterContent" :key="index"
-        :style="{ backgroundColor: currentSelectMode === item.name ? '#548235' : '#c5e0b4' }"
-        @click="handleClickMode(item.name)">
-        {{ item.name }}
+      </div>
+      <div class="filter-content">
+        <div v-for="(item, index) in filterContent" :key="index"
+          :style="{ backgroundColor: currentSelectMode === item.name ? '#548235' : '#c5e0b4' }"
+          @click="handleClickMode(item.name)">
+          {{ item.name }}
+        </div>
+      </div>
+      <div class="table">
+        <n-data-table :columns="currentColums" :data="data" :pagination="pagination" :bordered="false"
+          @update:page="onChange" @update:page-size="onUpdatePageSize" striped remote>
+          <!-- <template #virusFamily="row">
+            <span>{{ row.virusFamily }}</span>
+          </template> -->
+        </n-data-table>
       </div>
     </div>
-    <div class="table">
-      <n-data-table :columns="currentColums" :data="data" :pagination="pagination" :bordered="false"
-        @update:page="onChange" @update:page-size="onUpdatePageSize" striped remote />
-    </div>
-  </div>
+  </Layout>
 </template>
 
 <script setup>
+import Layout from '@/layout/index.vue'
 import { getViralInsectData, getViralPlantData, getViralPlantInsectData } from '@/api/browse'
-import { ref, onMounted, computed, onBeforeUnmount } from 'vue'
+import { ref, onMounted, computed, onBeforeUnmount, h } from 'vue'
 import { useRoute } from 'vue-router'
 import { useTableStore } from '@/stores/table'
 import eventBus from '@/utils/event-bus'
@@ -34,6 +41,7 @@ const route = useRoute()
 const mode = ref('')
 const tableStore = useTableStore()
 let queryMode = route.query.mode
+
 const filterContent = [
   {
     name: 'Non-Persistent Transmission',
@@ -87,7 +95,14 @@ const columns = [
   },
   {
     title: 'Virus TaxID',
-    key: 'virusTaxId'
+    key: 'virusTaxId',
+    render: (row) => {
+      return h('a', {
+        href: `https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=${row.virusTaxId}&lvl=3&lin=f&keep=1&srchmode=1&unlock`,
+        target: '_blank',
+        style: 'color: #385723;text-decoration: none;'
+      }, row.virusTaxId)
+    }
   },
   {
     title: 'Vector Order',
@@ -107,7 +122,14 @@ const columns = [
   },
   {
     title: 'Vector TaxID',
-    key: 'vectorTaxId'
+    key: 'vectorTaxId',
+    render: (row) => {
+      return h('a', {
+        href: `https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=${row.vectorTaxId}&lvl=3&lin=f&keep=1&srchmode=1&unlock`,
+        target: '_blank',
+        style: 'color: #385723;text-decoration: none;'
+      }, row.vectorTaxId)
+    }
   },
   {
     title: 'Virus Transmission Mode',
@@ -129,7 +151,14 @@ const columns1 = [
   },
   {
     title: 'Virus TaxID',
-    key: 'virusTaxId'
+    key: 'virusTaxId',
+    render: (row) => {
+      return h('a', {
+        href: `https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=${row.virusTaxId}&lvl=3&lin=f&keep=1&srchmode=1&unlock`,
+        target: '_blank',
+        style: 'color: #385723;text-decoration: none;'
+      }, row.virusTaxId)
+    }
   },
   {
     title: 'Host',
@@ -137,7 +166,14 @@ const columns1 = [
   },
   {
     title: 'Host TaxID',
-    key: 'hostTaxId'
+    key: 'hostTaxId',
+    render: (row) => {
+      return h('a', {
+        href: `https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=${row.hostTaxId}&lvl=3&lin=f&keep=1&srchmode=1&unlock`,
+        target: '_blank',
+        style: 'color: #385723;text-decoration: none;'
+      }, row.hostTaxId)
+    }
   },
   {
     title: 'Virus Transmission Mode',
@@ -159,7 +195,14 @@ const columns2 = [
   },
   {
     title: 'Virus TaxID',
-    key: 'virusTaxId'
+    key: 'virusTaxId',
+    render: (row) => {
+      return h('a', {
+        href: `https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=${row.virusTaxId}&lvl=3&lin=f&keep=1&srchmode=1&unlock`,
+        target: '_blank',
+        style: 'color: #385723;text-decoration: none;'
+      }, row.virusTaxId)
+    }
   },
   {
     title: 'Host',
@@ -167,7 +210,14 @@ const columns2 = [
   },
   {
     title: 'Host TaxID',
-    key: 'hostTaxId'
+    key: 'hostTaxId',
+    render: (row) => {
+      return h('a', {
+        href: `https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=${row.hostTaxId}&lvl=3&lin=f&keep=1&srchmode=1&unlock`,
+        target: '_blank',
+        style: 'color: #385723;text-decoration: none;'
+      }, row.hostTaxId)
+    }
   },
   {
     title: 'Vector Order',
@@ -187,7 +237,14 @@ const columns2 = [
   },
   {
     title: 'Vector TaxID',
-    key: 'vectorTaxId'
+    key: 'vectorTaxId',
+    render: (row) => {
+      return h('a', {
+        href: `https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=${row.vectorTaxId}&lvl=3&lin=f&keep=1&srchmode=1&unlock`,
+        target: '_blank',
+        style: 'color: #385723;text-decoration: none;'
+      }, row.vectorTaxId)
+    }
   },
   {
     title: 'Virus Transmission Mode',

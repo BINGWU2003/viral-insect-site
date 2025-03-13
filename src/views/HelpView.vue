@@ -1,16 +1,19 @@
 <template>
-  <div class="help">
-    <div v-for="item in article" :key="item.title">
-      <h1 class="title">{{ item.title }}
-      </h1>
-      <p style="font-size: 22px;">
-        {{ item.content }}
-      </p>
+  <Layout>
+    <div class="help">
+      <div v-for="item in article" :key="item.title">
+        <h1 class="title">{{ item.title }}
+        </h1>
+        <p style="font-size: 22px;">
+          {{ item.content }}
+        </p>
+      </div>
     </div>
-  </div>
+  </Layout>
 </template>
 
 <script setup>
+import Layout from '@/layout/index.vue'
 import { ref } from 'vue'
 const article = ref([
   {
