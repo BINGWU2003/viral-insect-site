@@ -54,7 +54,8 @@ const exportToExcel = async () => {
       await writable.write(blob)
       await writable.close()
     } catch (err) {
-      console.error('用户取消保存或浏览器不支持 showSaveFilePicker')
+      console.error('用户取消保存或浏览器不支持 showSaveFilePicker', err)
+      
     }
   } catch (error) {
     console.error('导出失败:', error)
