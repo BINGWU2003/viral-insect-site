@@ -33,7 +33,15 @@ const columns = [
 const exportToExcel = async () => {
   try {
     const wb = XLSX.utils.book_new()
-    const ws = XLSX.utils.json_to_sheet(result.value)
+    const headers = ['ID', 'Real', 'Pred']
+    const data = result.value.map(item => ({
+      'ID': item.id,
+      'Real': item.real,
+      'Pred': item.y_pred
+    }))
+    const ws = XLSX.utils.json_to_sheet(data, {
+      header: headers
+    })
     XLSX.utils.book_append_sheet(wb, ws, 'Prediction Results')
     XLSX.writeFile(wb, 'Prediction-Results.xlsx')
     // const excelBuffer = XLSX.write(wb, { bookType: 'xlsx', type: 'array' })
