@@ -6,7 +6,10 @@
     <div class="predict-mode">
       <h1 class="title">Predict plant virus transmission patterns</h1>
       <div class="input-text">
-        <n-input v-model:value="textValue" type="textarea" placeholder=">YP_009175082.1|1|coat protein
+        <n-input v-model:value="textValue" type="textarea"
+          placeholder="The first column is the ID | The second column is the virus transmission mode (if unknown, leave it blank) | Choose one of the following two: gene and protein
+The example is as follows:
+>YP_009175082.1|Persistent, circulative
 MPKREAPWRAMAGSSKVSRALNYSPRGGIRPKFDKASAWVNRPMYRKPRIYRTMRGPDIPKGCEGPCKVQSYEQRHDVSHVGKVMCISDITRGNGITHRVGKRFCVKSVYILGKVWMDDNIKLKNHTNSVMFWLVRDRRPYGTPMDFGQVFNMFDNEPSTATVKNDLRDRFQVMHKFYAKVTGGQYASNEQALVRRFWKVNNPCDLQPSGGREIREPYGERLVIVYGMYSCVYPVYATLKIRIYFYDSISN" />
       </div>
       <div class="buttons">
@@ -65,9 +68,9 @@ const handleFileChange = (event) => {
 }
 
 const handleSubmit = async () => {
-  const data = textValue.value.trim()
+  let data = textValue.value.trim()
   if (!data) {
-    return
+    data = ">YP_009175082.1|Persistent, circulativeMPKREAPWRAMAGSSKVSRALNYSPRGGIRPKFDKASAWVNRPMYRKPRIYRTMRGPDIPKGCEGPCKVQSYEQRHDVSHVGKVMCISDITRGNGITHRVGKRFCVKSVYILGKVWMDDNIKLKNHTNSVMFWLVRDRRPYGTPMDFGQVFNMFDNEPSTATVKNDLRDRFQVMHKFYAKVTGGQYASNEQALVRRFWKVNNPCDLQPSGGREIREPYGERLVIVYGMYSCVYPVYATLKIRIYFYDSISN"
   }
   if (data.length > 10000) {
     message.error('The input text is too long, please input again.')

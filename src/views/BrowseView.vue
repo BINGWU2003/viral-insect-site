@@ -101,7 +101,7 @@ const columns = [
       return h('a', {
         href: `https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=${row.virusTaxId}&lvl=3&lin=f&keep=1&srchmode=1&unlock`,
         target: '_blank',
-        style: 'color: #385723;text-decoration: none;'
+        style: 'color: #1565bd;text-decoration: none;'
       }, row.virusTaxId)
     }
   },
@@ -128,7 +128,7 @@ const columns = [
       return h('a', {
         href: `https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=${row.vectorTaxId}&lvl=3&lin=f&keep=1&srchmode=1&unlock`,
         target: '_blank',
-        style: 'color: #385723;text-decoration: none;'
+        style: 'color: #1565bd;text-decoration: none;'
       }, row.vectorTaxId)
     }
   },
@@ -157,7 +157,7 @@ const columns1 = [
       return h('a', {
         href: `https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=${row.virusTaxId}&lvl=3&lin=f&keep=1&srchmode=1&unlock`,
         target: '_blank',
-        style: 'color: #385723;text-decoration: none;'
+        style: 'color: #1565bd;text-decoration: none;'
       }, row.virusTaxId)
     }
   },
@@ -172,7 +172,7 @@ const columns1 = [
       return h('a', {
         href: `https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=${row.hostTaxId}&lvl=3&lin=f&keep=1&srchmode=1&unlock`,
         target: '_blank',
-        style: 'color: #385723;text-decoration: none;'
+        style: 'color: #1565bd;text-decoration: none;'
       }, row.hostTaxId)
     }
   },
@@ -201,7 +201,7 @@ const columns2 = [
       return h('a', {
         href: `https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=${row.virusTaxId}&lvl=3&lin=f&keep=1&srchmode=1&unlock`,
         target: '_blank',
-        style: 'color: #385723;text-decoration: none;'
+        style: 'color: #1565bd;text-decoration: none;'
       }, row.virusTaxId)
     }
   },
@@ -216,7 +216,7 @@ const columns2 = [
       return h('a', {
         href: `https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=${row.hostTaxId}&lvl=3&lin=f&keep=1&srchmode=1&unlock`,
         target: '_blank',
-        style: 'color: #385723;text-decoration: none;'
+        style: 'color: #1565bd;text-decoration: none;'
       }, row.hostTaxId)
     }
   },
@@ -243,7 +243,7 @@ const columns2 = [
       return h('a', {
         href: `https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=${row.vectorTaxId}&lvl=3&lin=f&keep=1&srchmode=1&unlock`,
         target: '_blank',
-        style: 'color: #385723;text-decoration: none;'
+        style: 'color: #1565bd;text-decoration: none;'
       }, row.vectorTaxId)
     }
   },

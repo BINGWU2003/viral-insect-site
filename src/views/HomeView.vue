@@ -33,9 +33,14 @@
         <div class="news">
           <h1 class="title-border">News</h1>
           <div class="content" style="display: block;">
-            <p>2023-8-22:</p>
+            <p>2025-3-10：</p>
             <p>
-              Retrieved plant virus-related literature and collected relevant data.
+              Successfully launched the website, integrating all compiled data and analytical tools.
+            </p>
+            <p>2024-2-26：</p>
+            <p>
+              Downloaded viral protein and genome sequences from the NCBI database and used these sequences to train
+              predictive models.
             </p>
             <p>
               2023-12-2：
@@ -43,14 +48,9 @@
             <p>
               Supplemented the dataset with virus entries from the GPI-base database.
             </p>
-            <p>2024-2-26：</p>
+            <p>2023-8-22:</p>
             <p>
-              Downloaded viral protein and genome sequences from the NCBI database and used these sequences to train
-              predictive models.
-            </p>
-            <p>2025-3-10：</p>
-            <p>
-              Successfully launched the website, integrating all compiled data and analytical tools.
+              Retrieved plant virus-related literature and collected relevant data.
             </p>
           </div>
         </div>
@@ -91,13 +91,11 @@
             </div>
           </div>
         </div>
-        <div class="home-bottom-content-right" style="opacity: 0;">
-          <h1 class="news">
-            Virus family distribution
-          </h1>
-          <div>
-            <img src="../assets/图片1.png" alt="" style="height: 200px;object-fit: contain;">
-          </div>
+        <div class="home-bottom-content-right"
+          style="display: flex;justify-content: center;align-items: center;margin-top: 20px;">
+          <a href="https://clustrmaps.com/site/1c4yw" title="ClustrMaps">
+            <img style="width: 270px;height: 180px;"
+              src="//www.clustrmaps.com/map_v2.png?d=DUi33m5Y95stqrSOWaFaz6auH4kFDb45S29bhqUu-Qs&cl=ffffff" /></a>
         </div>
       </div>
       <div class="author-info">
@@ -147,13 +145,13 @@ const relatedLinks = [
     url: 'https://pubmed.ncbi.nlm.nih.gov/',
   }, {
     name: 'GPI',
-    url: 'http://geminiviridae.com/',
+    url: 'http://gpi.geminiviridae.com/',
   }, {
     name: 'Virus-host DB',
     url: 'https://www.genome.jp/virushostdb/',
   }, {
     name: 'NCBI',
-    url: 'https://ftp.ncbi.nih.gov',
+    url: 'https://www.ncbi.nlm.nih.gov/',
   }
 ]
 const navigateTo = (url) => {
