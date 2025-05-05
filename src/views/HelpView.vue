@@ -18,7 +18,7 @@ import { ref } from 'vue'
 const article = ref([
   {
     title: '1. Introduction',
-    content: 'We have developed a virus-plant-insect database that provides a convenient query platform for researchers studying plant viruses. This database can not only help users obtain detailed information about plant viruses, but also provide a deep understanding of their transmission methods. In addition, it also supports the prediction of the transmission methods of unknown viruses, thus laying the foundation for the development of more scientific and effective control strategies.'
+    content: 'We have developed a virus-insect-plant database that provides a convenient query platform for researchers studying plant viruses. This database can not only help users obtain detailed information about plant viruses, but also provide a deep understanding of their transmission methods. In addition, it also supports the prediction of the transmission methods of unknown viruses, thus laying the foundation for the development of more scientific and effective control strategies.'
   },{
     title: '2. Browse',
     content: 'In the browse page, all entries in the plant virus database are listed. You can search the data by the column names given, such as virus name, virus ID, etc.'

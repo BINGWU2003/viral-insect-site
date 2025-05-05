@@ -1,7 +1,7 @@
 <template>
   <Layout>
     <div class="browse">
-      <h1 class="title">All virus-plant-insect interactions in Database</h1>
+      <h1 class="title">All virus-insect-plant interactions in Database</h1>
       <div class="search">
         <div class="search-input">
           <n-input v-model:value="keyWords" type="text" placeholder="Search virus, host, vector and Transmisson mode"

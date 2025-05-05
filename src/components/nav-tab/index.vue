@@ -37,7 +37,7 @@ const routes = ref([
 const options = [
   { label: 'By Virus-Insect', key: 'By Virus-Insect' },
   { label: 'By Virus-Plant', key: 'By Virus-Plant' },
-  { label: 'By Virus-Plant-Insect', key: 'By Virus-Plant-Insect' }
+  { label: 'By Virus-Insect-Plant', key: 'By Virus-Insect-Plant' }
 ]
 const tabValue = computed({
   get: () => {

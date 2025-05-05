@@ -21,9 +21,9 @@
       </div>
       <div class="home-center-content">
         <div class="article">
-          <h1 style="font-family: 'Microsoft YaHei';">Welcome to Virus-Plant-Insect DB</h1>
+          <h1 style="font-family: 'Microsoft YaHei';">Welcome to Virus-Insect-Plant DB</h1>
           <p>
-            VPI-DB integrates data on the relationships among viruses, plant hosts, and vector insects, represented in
+            VIP-DB integrates data on the relationships among viruses, plant hosts, and vector insects, represented in
             the
             form of NCBI taxonomy IDs for these viruses, plant hosts, and insects. The database encompasses 457 plant
             viruses, 394 plant hosts, and 108 insect vectors, and also provides functionality for predicting virus
@@ -103,7 +103,7 @@
         <p>Email: zhang2022@hunau.edu.cn</p>
         <p>google scholar:https://scholar.google.com.hk/citations?user=wLLSZQcAAAAJ&hl=zh-CN</p>
         <p>Hunan Agricultural University,Changsha, China</p>
-        <p>Cite us:Tao Deng,Hongyan Zhang,Zheng Zhang.Virus-Plant-Insect DB</p>
+        <p>Cite us:Tao Deng,Hongyan Zhang,Zheng Zhang.Virus-Insect-Plant DB</p>
       </div>
     </div>
   </Layout>

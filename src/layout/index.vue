@@ -2,7 +2,7 @@
   <div class="layout">
     <!-- <TopContent /> -->
     <div class="layout__content">
-      <div class="layout__content-title">Virus-Plant-Insect DB</div>
+      <div class="layout__content-title">Virus-Insect-Plant DB</div>
      <div style="background-color: white;border-radius: 10px;padding: 20px;">
       <NavTab />
       <BottomContent>
