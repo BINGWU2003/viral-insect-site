@@ -333,7 +333,7 @@ const getTableData = async () => {
   const params = {
     current: pagination.value.page,
     size: pagination.value.pageSize,
-    virusExistencePattern: currentSelectMode.value,
+    virusExistencePattern: currentSelectMode.value === 'NA' ? 'Unknow' : currentSelectMode.value,
     keyWords: currentKeyWords.value,
     virusFamily: route.query.virusFamily || '',
     vectorFamily: route.query.vectorFamily || '',
