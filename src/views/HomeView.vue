@@ -3,17 +3,26 @@
     <div class="home">
       <div class="home-top-content">
         <div class="home-top-content-item" v-for="(item, index) in topNav" :key="index">
-          <div class="home-top-content-item-top" @click="handleClickFilterContent(item.content1)"
-            :style="{ backgroundColor: item.backgroundColor, borderColor: item.borderColor }">
+          <div
+            class="home-top-content-item-top"
+            @click="handleClickFilterContent(item.content1)"
+            :style="{ backgroundColor: item.backgroundColor, borderColor: item.borderColor }"
+          >
             {{ item.content1 }}
           </div>
           <div class="home-top-content-item-bottom" v-if="item.content2 && item.content3">
-            <div :style="{ backgroundColor: item.backgroundColor, borderColor: item.borderColor }" v-if="item.content2"
-              @click="handleClickFilterContent(item.content2)">
+            <div
+              :style="{ backgroundColor: item.backgroundColor, borderColor: item.borderColor }"
+              v-if="item.content2"
+              @click="handleClickFilterContent(item.content2)"
+            >
               {{ item.content2 }}
             </div>
-            <div :style="{ backgroundColor: item.backgroundColor, borderColor: item.borderColor }" v-if="item.content2"
-              @click="handleClickFilterContent(item.content3)">
+            <div
+              :style="{ backgroundColor: item.backgroundColor, borderColor: item.borderColor }"
+              v-if="item.content2"
+              @click="handleClickFilterContent(item.content3)"
+            >
               {{ item.content3 }}
             </div>
           </div>
@@ -21,81 +30,91 @@
       </div>
       <div class="home-center-content">
         <div class="article">
-          <h1 style="font-family: 'Microsoft YaHei';">Welcome to Virus-Insect-Plant DB</h1>
+          <h1 style="font-family: 'Microsoft YaHei'">Welcome to Virus-Insect-Plant DB</h1>
           <p>
-            VIP-DB integrates data on the relationships among viruses, plant hosts, and vector insects, represented in
-            the
-            form of NCBI taxonomy IDs for these viruses, plant hosts, and insects. The database encompasses 457 plant
-            viruses, 394 plant hosts, and 108 insect vectors, and also provides functionality for predicting virus
-            transmission patterns.
+            VIP-DB integrates data on the relationships among viruses, plant hosts, and vector
+            insects, represented in the form of NCBI taxonomy IDs for these viruses, plant hosts,
+            and insects. The database encompasses 457 plant viruses, 394 plant hosts, and 108 insect
+            vectors, and also provides functionality for predicting virus transmission patterns.
           </p>
         </div>
         <div class="news">
           <h1 class="title-border">News</h1>
-          <div class="content" style="display: block;">
+          <div class="content" style="display: block">
             <p>2025-3-10：</p>
             <p>
               Successfully launched the website, integrating all compiled data and analytical tools.
             </p>
             <p>2024-2-26：</p>
             <p>
-              Downloaded viral protein and genome sequences from the NCBI database and used these sequences to train
-              predictive models.
+              Downloaded viral protein and genome sequences from the NCBI database and used these
+              sequences to train predictive models.
             </p>
-            <p>
-              2023-12-2：
-            </p>
-            <p>
-              Supplemented the dataset with virus entries from the GPI-base database.
-            </p>
+            <p>2023-12-2：</p>
+            <p>Supplemented the dataset with virus entries from the GPI-base database.</p>
             <p>2023-8-22:</p>
-            <p>
-              Retrieved plant virus-related literature and collected relevant data.
-            </p>
+            <p>Retrieved plant virus-related literature and collected relevant data.</p>
           </div>
         </div>
       </div>
       <div class="home-bottom-content">
         <div class="home-bottom-content-left">
-          <div style="width: 70%;">
+          <div style="width: 70%">
             <div class="news">
               <h1>Selected vector families</h1>
               <div class="content">
                 <template v-for="(item, indexInsect) in insectFamilies" :key="indexInsect">
-                  <SelectItem :name="item.name" imageType="virus" @select="handleClickInsect"></SelectItem>
+                  <SelectItem
+                    :name="item.name"
+                    imageType="virus"
+                    @select="handleClickInsect"
+                  ></SelectItem>
                 </template>
               </div>
             </div>
           </div>
         </div>
         <div class="home-bottom-content-right">
-          <h1 class="news title-border">
-            Related links
-          </h1>
-          <div style="margin-top: 10px;font-size: 20px;">
-            <div v-for="(item) in relatedLinks" :href="url" :key="item.url" style="cursor: pointer;"
-              @click="navigateTo(item.url)">{{ item.name }}</div>
+          <h1 class="news title-border">Related links</h1>
+          <div style="margin-top: 10px; font-size: 20px">
+            <div
+              v-for="item in relatedLinks"
+              :href="url"
+              :key="item.url"
+              style="cursor: pointer"
+              @click="navigateTo(item.url)"
+            >
+              {{ item.name }}
+            </div>
           </div>
         </div>
       </div>
       <div class="home-bottom-content">
         <div class="home-bottom-content-left">
-          <div style="width: 70%;">
+          <div style="width: 70%">
             <div class="news">
               <h1>Selected viral families</h1>
               <p class="content">
                 <template v-for="(item, indexVirus) in virusFamilies" :key="indexVirus">
-                  <SelectItem :name="item.name" imageType="vector" @select="handleSelectViral"></SelectItem>
+                  <SelectItem
+                    :name="item.name"
+                    imageType="vector"
+                    @select="handleSelectViral"
+                  ></SelectItem>
                 </template>
               </p>
             </div>
           </div>
         </div>
-        <div class="home-bottom-content-right"
-          style="display: flex;justify-content: center;align-items: center;margin-top: 20px;">
+        <div
+          class="home-bottom-content-right"
+          style="display: flex; justify-content: center; align-items: center; margin-top: 20px"
+        >
           <a href="https://clustrmaps.com/site/1c4yw" title="ClustrMaps">
-            <img style="width: 270px;height: 180px;"
-              src="//www.clustrmaps.com/map_v2.png?d=DUi33m5Y95stqrSOWaFaz6auH4kFDb45S29bhqUu-Qs&cl=ffffff" /></a>
+            <img
+              style="width: 270px; height: 180px"
+              src="//www.clustrmaps.com/map_v2.png?d=DUi33m5Y95stqrSOWaFaz6auH4kFDb45S29bhqUu-Qs&cl=ffffff"
+          /></a>
         </div>
       </div>
       <div class="author-info">
@@ -132,7 +151,7 @@ const topNav = [
     borderColor: '#548235',
   },
   {
-    content1: 'Unknow',
+    content1: '',
     content2: '',
     content3: '',
     backgroundColor: '#e2f0ff',
@@ -143,16 +162,19 @@ const relatedLinks = [
   {
     name: 'Pubmed',
     url: 'https://pubmed.ncbi.nlm.nih.gov/',
-  }, {
+  },
+  {
     name: 'GPI',
     url: 'http://gpi.geminiviridae.com/',
-  }, {
+  },
+  {
     name: 'Virus-host DB',
     url: 'https://www.genome.jp/virushostdb/',
-  }, {
+  },
+  {
     name: 'NCBI',
     url: 'https://www.ncbi.nlm.nih.gov/',
-  }
+  },
 ]
 const navigateTo = (url) => {
   window.location.href = url
@@ -160,67 +182,67 @@ const navigateTo = (url) => {
 
 const insectFamilies = [
   { id: 1, name: 'Aleyrodidae' },
-  { id: 2, name: 'Cicadellidae' },
-  { id: 3, name: 'Aphididae' },
-  { id: 4, name: 'Chrysomelidae' },
-  { id: 5, name: 'Scarabaeidae' },
-  { id: 6, name: 'Apidae' },
-  { id: 7, name: 'Coccinellidae' },
-  { id: 8, name: 'Delphacidae' },
-  { id: 9, name: 'Thripidae' },
-  { id: 10, name: 'Cerambycidae' },
-  { id: 11, name: 'Tenuipalpidae' },
-  { id: 12, name: 'Tetranychidae' },
-  { id: 13, name: 'Culicidae' },
-  { id: 14, name: 'Pseudococcidae' },
-  { id: 15, name: 'Eriophyidae' },
-  { id: 16, name: 'Noctuidae' },
-  { id: 17, name: 'Sciaridae' },
-  { id: 18, name: 'Bombycidae' },
-  { id: 19, name: 'Sphingidae' },
+  { id: 2, name: 'Aphididae' },
+  { id: 3, name: 'Apidae' },
+  { id: 4, name: 'Bombycidae' },
+  { id: 5, name: 'Cerambycidae' },
+  { id: 6, name: 'Chrysomelidae' },
+  { id: 7, name: 'Cicadellidae' },
+  { id: 8, name: 'Coccinellidae' },
+  { id: 9, name: 'Culicidae' },
+  { id: 10, name: 'Delphacidae' },
+  { id: 11, name: 'Eriophyidae' },
+  { id: 12, name: 'Noctuidae' },
+  { id: 13, name: 'Pseudococcidae' },
+  { id: 14, name: 'Scarabaeidae' },
+  { id: 15, name: 'Sciaridae' },
+  { id: 16, name: 'Sphingidae' },
+  { id: 17, name: 'Tenuipalpidae' },
+  { id: 18, name: 'Tetranychidae' },
+  { id: 19, name: 'Thripidae' },
 ]
 
 const virusFamilies = [
-  { id: 1, name: 'Solemoviridae' },
-  { id: 2, name: 'Nanoviridae' },
-  { id: 3, name: 'Tombusviridae' },
-  { id: 4, name: 'Geminiviridae' },
-  { id: 5, name: 'Secoviridae' },
-  { id: 6, name: 'Tymoviridae' },
-  { id: 7, name: 'Tospoviridae' },
-  { id: 8, name: 'Rhabdoviridae' },
-  { id: 9, name: 'Sedoreoviridae' },
-  { id: 10, name: 'Spinareoviridae' },
-  { id: 11, name: 'Phenuiviridae' },
-  { id: 12, name: 'Caulimoviridae' },
-  { id: 13, name: 'Closteroviridae' },
-  { id: 14, name: 'Betaflexiviridae' },
-  { id: 15, name: 'unkown' },
-  { id: 16, name: 'Potyviridae' },
-  { id: 17, name: 'Bromoviridae' },
-  { id: 18, name: 'Alphaflexiviridae' },
-  { id: 19, name: 'Virgaviridae' },
-  { id: 20, name: 'Pospiviroidae' },
-  { id: 21, name: 'Partitiviridae' },
-  { id: 22, name: 'Dicistroviridae' },
-  { id: 23, name: 'Tolecusatellitidae' },
-  { id: 24, name: 'Totiviridae' },
-  { id: 25, name: 'Baculoviridae' },
-  { id: 26, name: 'Parvoviridae' },
-  { id: 27, name: 'Benyviridae' },
-  { id: 28, name: 'Nodaviridae' },
-  { id: 29, name: 'Iflaviridae' },
-  { id: 30, name: 'Mesoniviridae' },
-  { id: 31, name: 'Fimoviridae' },
-  { id: 32, name: 'Chuviridae' },
+  { id: 1, name: 'Alphaflexiviridae' },
+  { id: 2, name: 'Baculoviridae' },
+  { id: 3, name: 'Benyviridae' },
+  { id: 4, name: 'Betaflexiviridae' },
+  { id: 5, name: 'Bromoviridae' },
+  { id: 6, name: 'Caulimoviridae' },
+  { id: 7, name: 'Chuviridae' },
+  { id: 8, name: 'Closteroviridae' },
+  { id: 9, name: 'Dicistroviridae' },
+  { id: 10, name: 'Fimoviridae' },
+  { id: 11, name: 'Geminiviridae' },
+  { id: 12, name: 'Iflaviridae' },
+  { id: 13, name: 'Mesoniviridae' },
+  { id: 14, name: 'Nanoviridae' },
+  { id: 15, name: 'Nodaviridae' },
+  { id: 16, name: 'Partitiviridae' },
+  { id: 17, name: 'Parvoviridae' },
+  { id: 18, name: 'Phenuiviridae' },
+  { id: 19, name: 'Pospiviroidae' },
+  { id: 20, name: 'Potyviridae' },
+  { id: 21, name: 'Rhabdoviridae' },
+  { id: 22, name: 'Secoviridae' },
+  { id: 23, name: 'Sedoreoviridae' },
+  { id: 24, name: 'Solemoviridae' },
+  { id: 25, name: 'Spinareoviridae' },
+  { id: 26, name: 'Tolecusatellitidae' },
+  { id: 27, name: 'Tombusviridae' },
+  { id: 28, name: 'Tospoviridae' },
+  { id: 29, name: 'Totiviridae' },
+  { id: 30, name: 'Tymoviridae' },
+  { id: 31, name: 'Unclassified' },
+  { id: 32, name: 'Virgaviridae' },
 ]
 const handleClickFilterContent = (name) => {
   tableStore.setTableType(1)
   router.push({
     name: 'browse',
     query: {
-      mode: name
-    }
+      mode: name,
+    },
   })
 }
 
@@ -229,8 +251,8 @@ const handleSelectViral = (name) => {
   router.push({
     name: 'browse',
     query: {
-      virusFamily: name
-    }
+      virusFamily: name,
+    },
   })
 }
 
@@ -239,8 +261,8 @@ const handleClickInsect = (name) => {
   router.push({
     name: 'browse',
     query: {
-      vectorFamily: name
-    }
+      vectorFamily: name,
+    },
   })
 }
 </script>
@@ -330,7 +352,6 @@ const handleClickInsect = (name) => {
         grid-template-columns: repeat(3, 1fr);
         gap: 10px;
       }
-
     }
   }
 
@@ -355,7 +376,6 @@ const handleClickInsect = (name) => {
             grid-template-columns: repeat(3, 1fr);
             gap: 10px;
           }
-
         }
       }
     }

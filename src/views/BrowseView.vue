@@ -4,22 +4,36 @@
       <h1 class="title">All virus-insect-plant interactions in Database</h1>
       <div class="search">
         <div class="search-input">
-          <n-input v-model:value="keyWords" type="text" placeholder="Search virus, host, vector and Transmisson mode"
-            @keyup.enter="handleSearch" />
+          <n-input
+            v-model:value="keyWords"
+            type="text"
+            placeholder="Search virus, host, vector and Transmisson mode"
+            @keyup.enter="handleSearch"
+          />
           <div class="search-button" @click="handleSearch">search</div>
         </div>
-
       </div>
       <div class="filter-content">
-        <div v-for="(item, index) in filterContent" :key="index"
+        <div
+          v-for="(item, index) in filterContent"
+          :key="index"
           :style="{ backgroundColor: currentSelectMode === item.name ? '#548235' : '#c5e0b4' }"
-          @click="handleClickMode(item.name)">
+          @click="handleClickMode(item.name)"
+        >
           {{ item.name }}
         </div>
       </div>
       <div class="table">
-        <n-data-table :columns="currentColums" :data="data" :pagination="pagination" :bordered="false"
-          @update:page="onChange" @update:page-size="onUpdatePageSize" striped remote>
+        <n-data-table
+          :columns="currentColums"
+          :data="data"
+          :pagination="pagination"
+          :bordered="false"
+          @update:page="onChange"
+          @update:page-size="onUpdatePageSize"
+          striped
+          remote
+        >
           <!-- <template #virusFamily="row">
             <span>{{ row.virusFamily }}</span>
           </template> -->
@@ -60,7 +74,7 @@ const filterContent = [
   },
 
   {
-    name: 'Unknow',
+    name: '',
   },
 ]
 const currentColums = computed(() => {
@@ -84,173 +98,201 @@ const currentKeyWords = computed(() => {
 const columns = [
   {
     title: 'Virus Family',
-    key: 'virusFamily'
+    key: 'virusFamily',
   },
   {
     title: 'Virus Genus',
-    key: 'vectorGenus'
+    key: 'vectorGenus',
   },
   {
     title: 'Virus',
-    key: 'virusName'
+    key: 'virusName',
   },
   {
     title: 'Virus TaxID',
     key: 'virusTaxId',
     render: (row) => {
-      return h('a', {
-        href: `https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=${row.virusTaxId}&lvl=3&lin=f&keep=1&srchmode=1&unlock`,
-        target: '_blank',
-        style: 'color: #1565bd;text-decoration: none;'
-      }, row.virusTaxId)
-    }
+      return h(
+        'a',
+        {
+          href: `https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=${row.virusTaxId}&lvl=3&lin=f&keep=1&srchmode=1&unlock`,
+          target: '_blank',
+          style: 'color: #1565bd;text-decoration: none;',
+        },
+        row.virusTaxId,
+      )
+    },
   },
   {
     title: 'Vector Order',
-    key: 'vectorOrder'
+    key: 'vectorOrder',
   },
   {
     title: 'Vector Family',
-    key: 'vectorFamily'
+    key: 'vectorFamily',
   },
   {
     title: 'Vector Genus',
-    key: 'vectorGenus'
+    key: 'vectorGenus',
   },
   {
     title: 'Vector',
-    key: 'vector'
+    key: 'vector',
   },
   {
     title: 'Vector TaxID',
     key: 'vectorTaxId',
     render: (row) => {
-      return h('a', {
-        href: `https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=${row.vectorTaxId}&lvl=3&lin=f&keep=1&srchmode=1&unlock`,
-        target: '_blank',
-        style: 'color: #1565bd;text-decoration: none;'
-      }, row.vectorTaxId)
-    }
+      return h(
+        'a',
+        {
+          href: `https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=${row.vectorTaxId}&lvl=3&lin=f&keep=1&srchmode=1&unlock`,
+          target: '_blank',
+          style: 'color: #1565bd;text-decoration: none;',
+        },
+        row.vectorTaxId,
+      )
+    },
   },
   {
     title: 'Virus Transmission Mode',
-    key: 'virusExistencePattern'
-  }
+    key: 'virusExistencePattern',
+  },
 ]
 const columns1 = [
   {
     title: 'Virus Family',
-    key: 'virusFamily'
+    key: 'virusFamily',
   },
   {
     title: 'Virus Genus',
-    key: 'virusGenus'
+    key: 'virusGenus',
   },
   {
     title: 'Virus',
-    key: 'virusName'
+    key: 'virusName',
   },
   {
     title: 'Virus TaxID',
     key: 'virusTaxId',
     render: (row) => {
-      return h('a', {
-        href: `https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=${row.virusTaxId}&lvl=3&lin=f&keep=1&srchmode=1&unlock`,
-        target: '_blank',
-        style: 'color: #1565bd;text-decoration: none;'
-      }, row.virusTaxId)
-    }
+      return h(
+        'a',
+        {
+          href: `https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=${row.virusTaxId}&lvl=3&lin=f&keep=1&srchmode=1&unlock`,
+          target: '_blank',
+          style: 'color: #1565bd;text-decoration: none;',
+        },
+        row.virusTaxId,
+      )
+    },
   },
   {
     title: 'Host',
-    key: 'hostName'
+    key: 'hostName',
   },
   {
     title: 'Host TaxID',
     key: 'hostTaxId',
     render: (row) => {
-      return h('a', {
-        href: `https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=${row.hostTaxId}&lvl=3&lin=f&keep=1&srchmode=1&unlock`,
-        target: '_blank',
-        style: 'color: #1565bd;text-decoration: none;'
-      }, row.hostTaxId)
-    }
+      return h(
+        'a',
+        {
+          href: `https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=${row.hostTaxId}&lvl=3&lin=f&keep=1&srchmode=1&unlock`,
+          target: '_blank',
+          style: 'color: #1565bd;text-decoration: none;',
+        },
+        row.hostTaxId,
+      )
+    },
   },
   {
     title: 'Virus Transmission Mode',
-    key: 'virusExistencePattern'
-  }
+    key: 'virusExistencePattern',
+  },
 ]
 const columns2 = [
   {
     title: 'Virus Family',
-    key: 'virusFamily'
+    key: 'virusFamily',
   },
   {
     title: 'Virus Genus',
-    key: 'virusGenus'
+    key: 'virusGenus',
   },
   {
     title: 'Virus',
-    key: 'virusName'
+    key: 'virusName',
   },
   {
     title: 'Virus TaxID',
     key: 'virusTaxId',
     render: (row) => {
-      return h('a', {
-        href: `https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=${row.virusTaxId}&lvl=3&lin=f&keep=1&srchmode=1&unlock`,
-        target: '_blank',
-        style: 'color: #1565bd;text-decoration: none;'
-      }, row.virusTaxId)
-    }
+      return h(
+        'a',
+        {
+          href: `https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=${row.virusTaxId}&lvl=3&lin=f&keep=1&srchmode=1&unlock`,
+          target: '_blank',
+          style: 'color: #1565bd;text-decoration: none;',
+        },
+        row.virusTaxId,
+      )
+    },
   },
   {
     title: 'Host',
-    key: 'hostName'
+    key: 'hostName',
   },
   {
     title: 'Host TaxID',
     key: 'hostTaxId',
     render: (row) => {
-      return h('a', {
-        href: `https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=${row.hostTaxId}&lvl=3&lin=f&keep=1&srchmode=1&unlock`,
-        target: '_blank',
-        style: 'color: #1565bd;text-decoration: none;'
-      }, row.hostTaxId)
-    }
+      return h(
+        'a',
+        {
+          href: `https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=${row.hostTaxId}&lvl=3&lin=f&keep=1&srchmode=1&unlock`,
+          target: '_blank',
+          style: 'color: #1565bd;text-decoration: none;',
+        },
+        row.hostTaxId,
+      )
+    },
   },
   {
     title: 'Vector Order',
-    key: 'vectorOrder'
+    key: 'vectorOrder',
   },
   {
     title: 'Vector Family',
-    key: 'vectorFamily'
+    key: 'vectorFamily',
   },
   {
     title: 'Vector Genus',
-    key: 'vectorGenus'
+    key: 'vectorGenus',
   },
   {
     title: 'Vector',
-    key: 'vector'
+    key: 'vector',
   },
   {
     title: 'Vector TaxID',
     key: 'vectorTaxId',
     render: (row) => {
-      return h('a', {
-        href: `https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=${row.vectorTaxId}&lvl=3&lin=f&keep=1&srchmode=1&unlock`,
-        target: '_blank',
-        style: 'color: #1565bd;text-decoration: none;'
-      }, row.vectorTaxId)
-    }
+      return h(
+        'a',
+        {
+          href: `https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=${row.vectorTaxId}&lvl=3&lin=f&keep=1&srchmode=1&unlock`,
+          target: '_blank',
+          style: 'color: #1565bd;text-decoration: none;',
+        },
+        row.vectorTaxId,
+      )
+    },
   },
   {
     title: 'Virus Transmission Mode',
-    key: 'virusExistencePattern'
-  }
+    key: 'virusExistencePattern',
+  },
 ]
 const data = ref([])
 
@@ -260,7 +302,8 @@ const pagination = ref({
   showSizePicker: true,
   pageSizes: [5, 10, 15],
   itemCount: 0,
-  prefix: () => { //分页前缀
+  prefix: () => {
+    //分页前缀
     return `Total is ${pagination.value.itemCount}.`
   },
   showQuickJumper: true,
@@ -298,7 +341,7 @@ const getTableData = async () => {
   const getDataFun = {
     1: getViralInsectData,
     2: getViralPlantData,
-    3: getViralPlantInsectData
+    3: getViralPlantInsectData,
   }
   const res = await getDataFun[tableStore.tableType](params)
   data.value = res.data.data.records
@@ -351,11 +394,9 @@ onBeforeUnmount(() => {
         font-weight: 900;
         border-radius: 6px;
         cursor: pointer;
-        background-color: #548235
+        background-color: #548235;
       }
     }
-
-
   }
 
   .filter-content {
@@ -376,7 +417,6 @@ onBeforeUnmount(() => {
       border-radius: 6px;
       cursor: pointer;
       background-color: #c5e0b4;
-
     }
   }
 
