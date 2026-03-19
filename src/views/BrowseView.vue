@@ -105,7 +105,7 @@ const columns = [
     key: 'vectorGenus',
   },
   {
-    title: 'Virus',
+    title: 'Virus Name',
     key: 'virusName',
   },
   {
@@ -155,7 +155,7 @@ const columns = [
     },
   },
   {
-    title: 'Virus Transmission Mode',
+    title: 'Virus Mode',
     key: 'virusExistencePattern',
   },
 ]
@@ -169,7 +169,7 @@ const columns1 = [
     key: 'virusGenus',
   },
   {
-    title: 'Virus',
+    title: 'Virus Name',
     key: 'virusName',
   },
   {
@@ -188,7 +188,7 @@ const columns1 = [
     },
   },
   {
-    title: 'Host',
+    title: 'Host Name',
     key: 'hostName',
   },
   {
@@ -207,7 +207,7 @@ const columns1 = [
     },
   },
   {
-    title: 'Virus Transmission Mode',
+    title: 'Virus Mode',
     key: 'virusExistencePattern',
   },
 ]
@@ -221,7 +221,7 @@ const columns2 = [
     key: 'virusGenus',
   },
   {
-    title: 'Virus',
+    title: 'Virus Name',
     key: 'virusName',
   },
   {
@@ -240,7 +240,7 @@ const columns2 = [
     },
   },
   {
-    title: 'Host',
+    title: 'Virus Host',
     key: 'hostName',
   },
   {
@@ -290,7 +290,7 @@ const columns2 = [
     },
   },
   {
-    title: 'Virus Transmission Mode',
+    title: 'Virus Mode',
     key: 'virusExistencePattern',
   },
 ]
