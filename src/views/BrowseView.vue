@@ -74,7 +74,7 @@ const filterContent = [
   },
 
   {
-    name: '',
+    name: 'NA',
   },
 ]
 const currentColums = computed(() => {
