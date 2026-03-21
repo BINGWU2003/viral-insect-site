@@ -191,14 +191,11 @@ const insectFamilies = [
   { id: 8, name: 'Coccinellidae' },
   { id: 9, name: 'Culicidae' },
   { id: 10, name: 'Delphacidae' },
-  { id: 11, name: 'Eriophyidae' },
   { id: 12, name: 'Noctuidae' },
   { id: 13, name: 'Pseudococcidae' },
   { id: 14, name: 'Scarabaeidae' },
   { id: 15, name: 'Sciaridae' },
   { id: 16, name: 'Sphingidae' },
-  { id: 17, name: 'Tenuipalpidae' },
-  { id: 18, name: 'Tetranychidae' },
   { id: 19, name: 'Thripidae' },
 ]
 
@@ -212,7 +209,6 @@ const virusFamilies = [
   { id: 7, name: 'Chuviridae' },
   { id: 8, name: 'Closteroviridae' },
   { id: 9, name: 'Dicistroviridae' },
-  { id: 10, name: 'Fimoviridae' },
   { id: 11, name: 'Geminiviridae' },
   { id: 12, name: 'Iflaviridae' },
   { id: 13, name: 'Mesoniviridae' },
