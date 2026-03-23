@@ -34,7 +34,7 @@
           <p>
             VIP-DB integrates data on the relationships among viruses, plant hosts, and vector
             insects, represented in the form of NCBI taxonomy IDs for these viruses, plant hosts,
-            and insects. The database encompasses 457 plant viruses, 394 plant hosts, and 108 insect
+            and insects. The database encompasses 447 plant viruses, 380 plant hosts, and 101 insect
             vectors, and also provides functionality for predicting virus transmission patterns.
           </p>
         </div>
