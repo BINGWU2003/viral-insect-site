@@ -102,7 +102,7 @@ const columns = [
   },
   {
     title: 'Virus Genus',
-    key: 'vectorGenus',
+    key: 'virusGenus',
   },
   {
     title: 'Virus Name',
