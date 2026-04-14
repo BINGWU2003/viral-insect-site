@@ -155,7 +155,7 @@ const columns = [
     },
   },
   {
-    title: 'Virus Mode',
+    title: 'Virus Transmission Mode',
     key: 'virusExistencePattern',
   },
 ]
@@ -207,7 +207,7 @@ const columns1 = [
     },
   },
   {
-    title: 'Virus Mode',
+    title: 'Virus Transmission Mode',
     key: 'virusExistencePattern',
   },
 ]
@@ -290,7 +290,7 @@ const columns2 = [
     },
   },
   {
-    title: 'Virus Mode',
+    title: 'Virus Transmission Mode',
     key: 'virusExistencePattern',
   },
 ]
