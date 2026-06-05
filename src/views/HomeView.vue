@@ -328,7 +328,7 @@ const handleClickInsect = (name) => {
           align-items: center;
           border-radius: 6px;
           border: 1px solid #bfd9f2;
-          color: #1565bd;
+          color: black;
           cursor: pointer;
           text-decoration: none;
           box-sizing: border-box;
