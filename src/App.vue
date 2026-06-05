@@ -5,7 +5,7 @@ import { RouterView } from 'vue-router'
 
 <template>
   <n-modal-provider>
-    <n-message-provider placement="bottom">
+    <n-message-provider placement="top">
       <RouterView />
     </n-message-provider>
   </n-modal-provider>

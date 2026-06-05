@@ -10,7 +10,17 @@
           >
             {{ item.content1 }}
           </div>
-          <div class="home-top-content-item-bottom" v-if="item.content2 && item.content3">
+          <div class="home-top-content-item-download" v-if="item.download">
+            <a
+              class="download-button"
+              :href="item.download.url"
+              :download="item.download.filename"
+              :style="{ backgroundColor: item.backgroundColor, borderColor: item.borderColor }"
+            >
+              {{ item.download.text }}
+            </a>
+          </div>
+          <div class="home-top-content-item-bottom" v-else-if="item.content2 && item.content3">
             <div
               :style="{ backgroundColor: item.backgroundColor, borderColor: item.borderColor }"
               v-if="item.content2"
@@ -106,16 +116,7 @@
             </div>
           </div>
         </div>
-        <div
-          class="home-bottom-content-right"
-          style="display: flex; justify-content: center; align-items: center; margin-top: 20px"
-        >
-          <a href="https://clustrmaps.com/site/1c4yw" title="ClustrMaps">
-            <img
-              style="width: 270px; height: 180px"
-              src="//www.clustrmaps.com/map_v2.png?d=DUi33m5Y95stqrSOWaFaz6auH4kFDb45S29bhqUu-Qs&cl=ffffff"
-          /></a>
-        </div>
+        <div class="home-bottom-content-right hidden-map-placeholder" aria-hidden="true"></div>
       </div>
       <div class="author-info">
         <p>For follow-up questions, please contact Dr. Zhang Zheng</p>
@@ -156,6 +157,11 @@ const topNav = [
     content3: '',
     backgroundColor: '#e2f0ff',
     borderColor: '#bfd9f2',
+    download: {
+      text: 'Download Virus-Insect-Plant',
+      url: '/Supplementary Table 1.xlsx',
+      filename: 'Supplementary Table 1.xlsx',
+    },
   },
 ]
 const relatedLinks = [
@@ -308,6 +314,30 @@ const handleClickInsect = (name) => {
           cursor: pointer;
         }
       }
+
+      .home-top-content-item-download {
+        width: 100%;
+        min-height: 100px;
+
+        .download-button {
+          width: 100%;
+          min-height: 100px;
+          padding: 10px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 6px;
+          border: 1px solid #bfd9f2;
+          color: #1565bd;
+          cursor: pointer;
+          text-decoration: none;
+          box-sizing: border-box;
+
+          &:hover {
+            background-color: #d5eaff !important;
+          }
+        }
+      }
     }
   }
 
@@ -393,6 +423,12 @@ const handleClickInsect = (name) => {
         flex-direction: column;
         color: #1565bd;
       }
+    }
+
+    .hidden-map-placeholder {
+      min-height: 200px;
+      margin-top: 20px;
+      pointer-events: none;
     }
   }
 

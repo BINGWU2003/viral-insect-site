@@ -31,6 +31,9 @@ MPKREAPWRAMAGSSKVSRALNYSPRGGIRPKFDKASAWVNRPMYRKPRIYRTMRGPDIPKGCEGPCKVQSYEQRHDVSH
               class="button-style" @click="selectPredictMode('Protein')">Protein</div>
           </div>
         </div>
+        <div class="readme-button">
+          <a class="button-style" href="/Readme.docx" download="Readme.docx">Readme</a>
+        </div>
       </div>
       <input type="file" ref="fileInput" style="display: none;" @change="handleFileChange" accept=".txt" />
     </div>
@@ -95,6 +98,7 @@ const handleSubmit = async () => {
     router.push('/predict-data')
   } catch (error) {
     console.error(error)
+    message.error('格式不正确，请检查后重试。')
   }
 }
 
@@ -168,6 +172,26 @@ const clearText = () => {
         justify-content: center;
         align-items: center;
         cursor: pointer;
+      }
+    }
+
+    .readme-button {
+      display: flex;
+      width: 110px;
+      margin-left: auto;
+
+      .button-style {
+        width: 100%;
+        height: 36px;
+        background-color: #a9d18e;
+        border: 2px solid black;
+        border-radius: 4px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: black;
+        cursor: pointer;
+        text-decoration: none;
       }
     }
   }
