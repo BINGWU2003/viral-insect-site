@@ -25,6 +25,7 @@
       </div>
       <div class="table">
         <n-data-table
+          :key="tableStore.tableType"
           :columns="currentColums"
           :data="data"
           :pagination="pagination"
