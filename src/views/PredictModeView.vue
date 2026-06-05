@@ -98,7 +98,7 @@ const handleSubmit = async () => {
     router.push('/predict-data')
   } catch (error) {
     console.error(error)
-    message.error('格式不正确，请检查后重试。')
+    message.error('Please enter the correct format.')
   }
 }
 
