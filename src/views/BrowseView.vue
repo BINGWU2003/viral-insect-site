@@ -31,6 +31,7 @@
           :pagination="pagination"
           :bordered="false"
           :scroll-x="currentTableScrollX"
+          table-layout="fixed"
           @update:page="onChange"
           @update:page-size="onUpdatePageSize"
           striped
@@ -171,7 +172,10 @@ const columns = [
   {
     title: 'Virus Transmission Mode',
     key: 'virusExistencePattern',
-    width: 280,
+    width: 360,
+    ellipsis: {
+      tooltip: true,
+    },
   },
 ]
 const columns1 = [
@@ -230,7 +234,10 @@ const columns1 = [
   {
     title: 'Virus Transmission Mode',
     key: 'virusExistencePattern',
-    width: 280,
+    width: 360,
+    ellipsis: {
+      tooltip: true,
+    },
   },
 ]
 const columns2 = [
@@ -325,7 +332,10 @@ const columns2 = [
   {
     title: 'Virus Transmission Mode',
     key: 'virusExistencePattern',
-    width: 280,
+    width: 360,
+    ellipsis: {
+      tooltip: true,
+    },
   },
   {
     title: 'DOI for Validation Virus-Insect Relationships',
