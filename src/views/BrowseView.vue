@@ -29,6 +29,7 @@
           :data="data"
           :pagination="pagination"
           :bordered="false"
+          :scroll-x="currentTableScrollX"
           @update:page="onChange"
           @update:page-size="onUpdatePageSize"
           striped
@@ -95,22 +96,29 @@ const currentSelectMode = computed(() => {
 const currentKeyWords = computed(() => {
   return keyWords.value || ''
 })
+const currentTableScrollX = computed(() => {
+  return currentColums.value.reduce((total, column) => total + column.width, 0)
+})
 const columns = [
   {
     title: 'Virus Family',
     key: 'virusFamily',
+    width: 150,
   },
   {
     title: 'Virus Genus',
     key: 'virusGenus',
+    width: 150,
   },
   {
     title: 'Virus Name',
     key: 'virusName',
+    width: 220,
   },
   {
     title: 'Virus TaxID',
     key: 'virusTaxId',
+    width: 120,
     render: (row) => {
       return h(
         'a',
@@ -126,22 +134,27 @@ const columns = [
   {
     title: 'Vector Order',
     key: 'vectorOrder',
+    width: 140,
   },
   {
     title: 'Vector Family',
     key: 'vectorFamily',
+    width: 160,
   },
   {
     title: 'Vector Genus',
     key: 'vectorGenus',
+    width: 160,
   },
   {
     title: 'Vector',
     key: 'vector',
+    width: 220,
   },
   {
     title: 'Vector TaxID',
     key: 'vectorTaxId',
+    width: 120,
     render: (row) => {
       return h(
         'a',
@@ -157,24 +170,29 @@ const columns = [
   {
     title: 'Virus Transmission Mode',
     key: 'virusExistencePattern',
+    width: 280,
   },
 ]
 const columns1 = [
   {
     title: 'Virus Family',
     key: 'virusFamily',
+    width: 150,
   },
   {
     title: 'Virus Genus',
     key: 'virusGenus',
+    width: 150,
   },
   {
     title: 'Virus Name',
     key: 'virusName',
+    width: 220,
   },
   {
     title: 'Virus TaxID',
     key: 'virusTaxId',
+    width: 120,
     render: (row) => {
       return h(
         'a',
@@ -190,10 +208,12 @@ const columns1 = [
   {
     title: 'Host Name',
     key: 'hostName',
+    width: 220,
   },
   {
     title: 'Host TaxID',
     key: 'hostTaxId',
+    width: 120,
     render: (row) => {
       return h(
         'a',
@@ -209,24 +229,29 @@ const columns1 = [
   {
     title: 'Virus Transmission Mode',
     key: 'virusExistencePattern',
+    width: 280,
   },
 ]
 const columns2 = [
   {
     title: 'Virus Family',
     key: 'virusFamily',
+    width: 150,
   },
   {
     title: 'Virus Genus',
     key: 'virusGenus',
+    width: 150,
   },
   {
     title: 'Virus Name',
     key: 'virusName',
+    width: 220,
   },
   {
     title: 'Virus TaxID',
     key: 'virusTaxId',
+    width: 120,
     render: (row) => {
       return h(
         'a',
@@ -242,10 +267,12 @@ const columns2 = [
   {
     title: 'Virus Host',
     key: 'hostName',
+    width: 220,
   },
   {
     title: 'Host TaxID',
     key: 'hostTaxId',
+    width: 120,
     render: (row) => {
       return h(
         'a',
@@ -261,22 +288,27 @@ const columns2 = [
   {
     title: 'Vector Order',
     key: 'vectorOrder',
+    width: 140,
   },
   {
     title: 'Vector Family',
     key: 'vectorFamily',
+    width: 160,
   },
   {
     title: 'Vector Genus',
     key: 'vectorGenus',
+    width: 160,
   },
   {
     title: 'Vector',
     key: 'vector',
+    width: 220,
   },
   {
     title: 'Vector TaxID',
     key: 'vectorTaxId',
+    width: 120,
     render: (row) => {
       return h(
         'a',
@@ -292,6 +324,17 @@ const columns2 = [
   {
     title: 'Virus Transmission Mode',
     key: 'virusExistencePattern',
+    width: 280,
+  },
+  {
+    title: 'DOI for Validation Virus-Insect Relationships',
+    key: 'doiValidationVirusInsectRelationships',
+    width: 360,
+  },
+  {
+    title: 'DOI for Validation Virus Transmission Mode',
+    key: 'doiValidationVirusTransmissionMode',
+    width: 360,
   },
 ]
 const data = ref([])
@@ -422,6 +465,11 @@ onBeforeUnmount(() => {
 
   .table {
     margin: 0 auto;
+
+    :deep(.n-data-table-th),
+    :deep(.n-data-table-td) {
+      white-space: nowrap;
+    }
   }
 }
 </style>
