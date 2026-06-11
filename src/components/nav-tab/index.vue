@@ -31,7 +31,7 @@ const tableStore = useTableStore()
 const routes = ref([
   { name: 'Home', path: '/' },
   { name: 'Browse', path: '/browse' },
-  { name: 'Predict Mode', path: '/predict-mode' },
+  // { name: 'Predict Mode', path: '/predict-mode' },
   { name: 'Help', path: '/help' }
 ])
 const options = [

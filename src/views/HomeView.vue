@@ -48,7 +48,7 @@
             vectors, and also provides functionality for predicting virus transmission patterns.
           </p>
         </div>
-        <div class="news">
+        <!-- <div class="news">
           <h1 class="title-border">News</h1>
           <div class="content" style="display: block">
             <p>2025-3-10：</p>
@@ -65,7 +65,7 @@
             <p>2023-8-22:</p>
             <p>Retrieved plant virus-related literature and collected relevant data.</p>
           </div>
-        </div>
+        </div> -->
       </div>
       <div class="home-bottom-content">
         <div class="home-bottom-content-left">
