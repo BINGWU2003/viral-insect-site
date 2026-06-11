@@ -1,0 +1,92 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-production
+  cancel-in-progress: true
+
+env:
+  SERVER_HOST: ${{ secrets.SERVER_HOST }}
+  SERVER_PORT: ${{ secrets.SERVER_PORT }}
+  SERVER_USER: ${{ secrets.SERVER_USER }}
+
+jobs:
+  deploy:
+    name: Build and deploy
+    runs-on: ubuntu-latest
+    env:
+      DEPLOY_AFTER_COMMAND: ${{ secrets.DEPLOY_AFTER_COMMAND }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Setup pnpm
+        run: |
+          corepack enable
+          corepack prepare pnpm@9 --activate
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build
+        run: pnpm run build
+
+      - name: Check deploy secrets
+        env:
+          DEPLOY_PASSWORD: ${{ secrets.DEPLOY_PASSWORD }}
+          DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
+        run: |
+          test -n "$SERVER_HOST"
+          test -n "$SERVER_PORT"
+          test -n "$SERVER_USER"
+          test -n "$DEPLOY_PASSWORD"
+          test -n "$DEPLOY_PATH"
+
+      - name: Install deploy tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y sshpass rsync
+
+      - name: Prepare remote directory
+        env:
+          SSHPASS: ${{ secrets.DEPLOY_PASSWORD }}
+          DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
+        run: |
+          test -n "$SSHPASS"
+          test -n "$DEPLOY_PATH"
+          sshpass -e ssh \
+            -p "$SERVER_PORT" \
+            -o StrictHostKeyChecking=no \
+            "$SERVER_USER@$SERVER_HOST" \
+            "mkdir -p '$DEPLOY_PATH'"
+
+      - name: Upload dist
+        env:
+          SSHPASS: ${{ secrets.DEPLOY_PASSWORD }}
+          DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
+        run: |
+          sshpass -e rsync -az --delete \
+            -e "ssh -p $SERVER_PORT -o StrictHostKeyChecking=no" \
+            dist/ "$SERVER_USER@$SERVER_HOST:$DEPLOY_PATH/"
+
+      - name: Run after-deploy command
+        if: env.DEPLOY_AFTER_COMMAND != ''
+        env:
+          SSHPASS: ${{ secrets.DEPLOY_PASSWORD }}
+        run: |
+          sshpass -e ssh \
+            -p "$SERVER_PORT" \
+            -o StrictHostKeyChecking=no \
+            "$SERVER_USER@$SERVER_HOST" \
+            "$DEPLOY_AFTER_COMMAND"
