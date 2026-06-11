@@ -341,11 +341,17 @@ const columns2 = [
     title: 'DOI for Validation Virus-Insect Relationships',
     key: 'doiValidationVirusInsectRelationships',
     width: 360,
+    ellipsis: {
+      tooltip: true,
+    },
   },
   {
     title: 'DOI for Validation Virus Transmission Mode',
     key: 'doiValidationVirusTransmissionMode',
     width: 360,
+    ellipsis: {
+      tooltip: true,
+    },
   },
 ]
 const data = ref([])
