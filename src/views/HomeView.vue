@@ -119,10 +119,10 @@
       </div>
       <div class="author-info">
         <p>For follow-up questions, please contact Dr. Zhang Zheng</p>
-        <p>Email: zhang2022@hunau.edu.cn</p>
+        <p>Email: zhang2022@hunau.edu.cn, hongyan_zhang@hunau.edu.cn</p>
         <p>google scholar:https://scholar.google.com.hk/citations?user=wLLSZQcAAAAJ&hl=zh-CN</p>
         <p>Hunan Agricultural University,Changsha, China</p>
-        <p>Cite us:Tao Deng,Hongyan Zhang,Zheng Zhang.Virus-Insect-Plant DB</p>
+        <p>Cite us: Tao Deng, Dandan Liu, Xinghui Zhu, Hongyan Zhang, and Zheng Zhang. VIP-DB: A Comprehensive Database of Virus-Insect-Plant Relationships.</p>
       </div>
     </div>
   </Layout>
