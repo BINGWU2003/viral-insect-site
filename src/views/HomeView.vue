@@ -118,7 +118,7 @@
         <div class="home-bottom-content-right hidden-map-placeholder" aria-hidden="true"></div>
       </div>
       <div class="author-info">
-        <p>For follow-up questions, please contact Dr. Zhang Zheng</p>
+        <p>For follow-up questions, please contact Dr. Zheng Zhang or Dr. Hongyan Zhang.</p>
         <p>Email: zhang2022@hunau.edu.cn, hongyan_zhang@hunau.edu.cn</p>
         <p>google scholar:https://scholar.google.com.hk/citations?user=wLLSZQcAAAAJ&hl=zh-CN</p>
         <p>Hunan Agricultural University,Changsha, China</p>
